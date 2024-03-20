@@ -1,7 +1,7 @@
 import Home from './views/pages/Home.js';
-import ArticleAll from './views/pages/ArticleAll.js';
-import ArticleShow from './views/pages/ArticleShow.js';
-import About from './views/pages/About.js';
+// import ArticleAll from './views/pages/ArticleAll.js';
+// import ArticleShow from './views/pages/ArticleShow.js';
+// import About from './views/pages/About.js';
 import Error404 from './views/pages/Error404.js';
 
 import Utils from './services/Utils.js';
@@ -9,9 +9,9 @@ import Utils from './services/Utils.js';
 // List of supported routes. Any url other than these routes will throw a 404 error
 const routes = {
     '/'                     : Home
-    , '/about'              : About
-    , '/articles'           : ArticleAll
-    , '/articles/:id'       : ArticleShow
+    // , '/about'              : About
+    // , '/articles'           : ArticleAll
+    // , '/articles/:id'       : ArticleShow
 };
 
 // The router code. Takes a URL, checks against the list of supported routes and then renders the corresponding content page.
