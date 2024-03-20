@@ -2867,7 +2867,8 @@
       "Sp. Attack": 110,
       "Sp. Defense": 95,
       "Speed": 65
-    }
+    },
+    "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/134.png"
   },
   {
     "id": 135,
@@ -2887,7 +2888,8 @@
       "Sp. Attack": 110,
       "Sp. Defense": 95,
       "Speed": 130
-    }
+    },
+    "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/135.png"
   },
   {
     "id": 136,
@@ -2907,7 +2909,8 @@
       "Sp. Attack": 95,
       "Sp. Defense": 110,
       "Speed": 65
-    }
+    },
+    "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/136.png"
   },
   {
     "id": 137,
@@ -2927,7 +2930,8 @@
       "Sp. Attack": 85,
       "Sp. Defense": 75,
       "Speed": 40
-    }
+    },
+    "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/137.png"
   },
   {
     "id": 138,
@@ -2948,7 +2952,8 @@
       "Sp. Attack": 90,
       "Sp. Defense": 55,
       "Speed": 35
-    }
+    },
+    "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/138.png"
   },
   {
     "id": 139,
@@ -2969,7 +2974,8 @@
       "Sp. Attack": 115,
       "Sp. Defense": 70,
       "Speed": 55
-    }
+    },
+    "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/139.png"
   },
   {
     "id": 140,
@@ -2990,7 +2996,8 @@
       "Sp. Attack": 55,
       "Sp. Defense": 45,
       "Speed": 55
-    }
+    },
+    "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/140.png"
   },
   {
     "id": 141,
@@ -3011,7 +3018,8 @@
       "Sp. Attack": 65,
       "Sp. Defense": 70,
       "Speed": 80
-    }
+    },
+    "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/141.png"
   },
   {
     "id": 142,
@@ -3032,7 +3040,8 @@
       "Sp. Attack": 60,
       "Sp. Defense": 75,
       "Speed": 130
-    }
+    },
+    "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/142.png"
   },
   {
     "id": 143,
@@ -3052,7 +3061,8 @@
       "Sp. Attack": 65,
       "Sp. Defense": 110,
       "Speed": 30
-    }
+    },
+    "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/143.png"
   },
   {
     "id": 144,
@@ -3073,7 +3083,8 @@
       "Sp. Attack": 95,
       "Sp. Defense": 125,
       "Speed": 85
-    }
+    },
+    "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/144.png"
   },
   {
     "id": 145,
@@ -3094,7 +3105,8 @@
       "Sp. Attack": 125,
       "Sp. Defense": 90,
       "Speed": 100
-    }
+    },
+    "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/145.png"
   },
   {
     "id": 146,
@@ -3115,7 +3127,8 @@
       "Sp. Attack": 125,
       "Sp. Defense": 85,
       "Speed": 90
-    }
+    },
+    "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/146.png"
   },
   {
     "id": 147,
@@ -3135,7 +3148,8 @@
       "Sp. Attack": 50,
       "Sp. Defense": 50,
       "Speed": 50
-    }
+    },
+    "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/147.png"
   },
   {
     "id": 148,
@@ -3155,7 +3169,8 @@
       "Sp. Attack": 70,
       "Sp. Defense": 70,
       "Speed": 70
-    }
+    },
+    "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/148.png"
   },
   {
     "id": 149,
@@ -3176,7 +3191,8 @@
       "Sp. Attack": 100,
       "Sp. Defense": 100,
       "Speed": 80
-    }
+    },
+    "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/149.png"
   },
   {
     "id": 150,
@@ -3196,7 +3212,8 @@
       "Sp. Attack": 154,
       "Sp. Defense": 90,
       "Speed": 130
-    }
+    },
+    "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/150.png"
   },
   {
     "id": 151,
@@ -3219,4 +3236,4 @@
     },
     "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/151.png"
   }
-}
+]
