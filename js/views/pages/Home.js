@@ -9,7 +9,7 @@ export default class Home {
                 <div class="col">
                     <div class="card shadow-sm">
                         <p>${pokemon.id}</p>
-                        <h2>${pokemon.name}</h2>
+                        <h2>${pokemon.name["french"]}</h2>
                         <img src="${pokemon.img}" class="card-img-top" alt="${pokemon.name}">
                         <div class="card-body"></div>
                     </div>
