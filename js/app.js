@@ -27,6 +27,10 @@ const router = async () => {
     
     console.log(page)
     content.innerHTML = await page.render();
+
+    if (page instanceof Items) {
+        await page.bindEvents();
+    }
 }
 
 // Listen on hash change:
