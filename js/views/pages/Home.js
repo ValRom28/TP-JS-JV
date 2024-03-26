@@ -1,8 +1,5 @@
 import PokemonProvider from "../../services/PokemonProvider.js";
 
-
-
-
 export default class Home {
     async render() {
         let types = await PokemonProvider.fetchTypes();
@@ -19,11 +16,10 @@ export default class Home {
         pokedex.forEach(pokemon => {
             html += /*html*/`
                 <div class="col">
-                    <div class="card shadow-sm">
-                        <p>${pokemon.id}</p>
-                        <h2>${pokemon.name["french"]}</h2>
+                    <div class="card">
+                        <p class="card-text">${pokemon.id}</p>
+                        <h2 class="card-title">${pokemon.name["french"]}</h2>
                         <img src="${pokemon.img}" class="card-img-top" alt="${pokemon.name}">
-                        <div class="card-body"></div>
                     </div>
                 </div>
             `;
@@ -36,43 +32,95 @@ export default class Home {
             <h1> POKEDEX </h1>
                 ${selector1}
                 ${selector2}
+                <input type="text" id="search" placeholder="Rechercher un Pokémon">
                 <button id="filterButton"> Rechercher </button>
                 <div class="container">
-                    <div class="row row-cols-1 row-cols-md-3 g-4">
+                    <div class="row row-cols-1 row-cols-md-3 g-4" id="pokemonList">
                         ${html}
                     </div>
             </main>
         `;
     }
 
-    
-
-    afterRender() {
-    const filterButton = document.getElementById('filterButton');
-    filterButton.addEventListener('click', async () => {
-        let type1 = document.getElementById('s1').value;
-        let type2 = document.getElementById('s2').value;
+    async searchPokemonByName() {
+        let searchValue = document.getElementById('search').value.toLowerCase();
         let pokedex = await PokemonProvider.fetchPokedex();
-        let filteredPokedex = this.filterByType(type1, type2, pokedex);
-        
-        // Mettre à jour l'interface utilisateur avec les Pokémon filtrés
+        let filteredPokemon = pokedex.filter(pokemon => pokemon.name["french"].toLowerCase().includes(searchValue));
         let html = "";
-        filteredPokedex.forEach(pokemon => {
+        filteredPokemon.forEach(pokemon => {
             html += /*html*/`
                 <div class="col">
-                    <div class="card shadow-sm">
-                        <p>${pokemon.id}</p>
-                        <h2>${pokemon.name["french"]}</h2>
+                    <div class="card">
+                        <p class="card-text">${pokemon.id}</p>
+                        <h2 class="card-title">${pokemon.name["french"]}</h2>
                         <img src="${pokemon.img}" class="card-img-top" alt="${pokemon.name}">
-                        <div class="card-body"></div>
                     </div>
                 </div>
             `;
         });
+        document.getElementById('pokemonList').innerHTML = html;
+    }
+    async searchPokemonByType() {
+        let type1 = document.getElementById('s1').value;
+        type1 = await this.typeFrencheTotypeEnglish(type1);
+        console.log(type1);
+        let type2 = document.getElementById('s2').value;
+        type2 = await this.typeFrencheTotypeEnglish(type2);
+        let pokedex = await PokemonProvider.fetchPokedex();
+        let filteredPokemon = pokedex.filter(pokemon => (pokemon.type.includes(type1)|| type1=="Tous les types") && (pokemon.type.includes(type2)|| type2== "Tous les types"));
+        let html = "";
+        filteredPokemon.forEach(pokemon => {
+            console.log(pokemon);
+            html += /*html*/`
+                <div class="col">
+                    <div class="card">
+                        <p class="card-text">${pokemon.id}</p>
+                        <h2 class="card-title">${pokemon.name["french"]}</h2>
+                        <img src="${pokemon.img}" class="card-img-top" alt="${pokemon.name}">
+                    </div>
+                </div>
+            `;
+        });
+        document.getElementById('pokemonList').innerHTML = html;
+    }
+    async typeFrencheTotypeEnglish(typeF){
+        if (typeF == "Tous les types") {
+            return typeF;
+        }
+        else{
+        let types = await PokemonProvider.fetchTypes();
+        let type = types.find(type => type.french == typeF);
+        if (type) {
+            return type.english;
+        } else {
+            // handle error, e.g. throw an error or return a default value
+            throw new Error(`No type found for ${typeF}`);
+        }
+    }
+    }
+   
 
-        const pokemonContainer = document.querySelector('.row-cols-md-3');
-        pokemonContainer.innerHTML = html;
-    });
+    after_render() {
+        let filterButton = document.getElementById('filterButton');
+        if (filterButton) {
+            filterButton.addEventListener('click', () => {
+                console.log("Button clicked"); // Vérifier si le bouton est cliqué
+                let type1= document.getElementById('s1').value;
+                let type2= document.getElementById('s2').value;
+                let search= document.getElementById('search').value;
+                if (type1 == "Tous les types" && type2 == "Tous les types") {
+                    this.searchPokemonByName();
+                }
+                else if (search == "") {
+                    this.searchPokemonByType();
+                }
+                else {
+                    this.searchPokemonByName();
+                }
+            });
+        } else {
+            console.log("Filter button not found"); // Vérifier si le bouton est trouvé
+        }
+    }
 }
 
-}
