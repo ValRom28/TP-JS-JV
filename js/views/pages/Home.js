@@ -110,7 +110,7 @@ export default class Home {
         filteredPokemon.forEach(pokemon => {
             html += /*html*/`
                 <div class="col">
-                    <div class="card">
+                    <div id="${pokemon.id}" class="card">
                         <p class="card-text">${pokemon.id}</p>
                         <h2 class="card-title">${pokemon.name["french"]}</h2>
                         <img src="${pokemon.img}" class="card-img-top" alt="${pokemon.name}">
