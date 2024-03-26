@@ -52,11 +52,13 @@ export default class Home {
         filteredPokemon.forEach(pokemon => {
             html += /*html*/`
                 <div class="col">
+                <a href="#/pokemon/${pokemon.id}">
                     <div class="card">
                         <p class="card-text">${pokemon.id}</p>
                         <h2 class="card-title">${pokemon.name["french"]}</h2>
                         <img src="${pokemon.img}" class="card-img-top" alt="${pokemon.name}">
                     </div>
+                    </a>
                 </div>
             `;
         });
@@ -75,11 +77,13 @@ export default class Home {
             console.log(pokemon);
             html += /*html*/`
                 <div class="col">
+                <a href="#/pokemon/${pokemon.id}">
                     <div class="card">
                         <p class="card-text">${pokemon.id}</p>
                         <h2 class="card-title">${pokemon.name["french"]}</h2>
                         <img src="${pokemon.img}" class="card-img-top" alt="${pokemon.name}">
                     </div>
+                    </a>
                 </div>
             `;
         });
@@ -112,12 +116,14 @@ export default class Home {
         filteredPokemon.forEach(pokemon => {
             html += /*html*/`
                 <div class="col">
-                    <div id="${pokemon.id}" class="card">
+                <a href="#/pokemon/${pokemon.id}">
+                    <div class="card">
                         <p class="card-text">${pokemon.id}</p>
                         <h2 class="card-title">${pokemon.name["french"]}</h2>
                         <img src="${pokemon.img}" class="card-img-top" alt="${pokemon.name}">
                     </div>
-                    </div>
+                    </a>
+                </div>
             `;
         }
         );
