@@ -11,4 +11,14 @@ export default class ItemsProvider {
             return [];
         }
     }
+
+    static async getItemById(id) {
+        try {
+            const response = await fetch(ENDPOINT + '/items/' + id)
+            return await response.json()
+        } catch (error) {
+            console.error('Error fetching object', error);
+            return null;
+        }
+    }
 }
