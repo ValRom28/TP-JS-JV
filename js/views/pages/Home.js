@@ -98,6 +98,29 @@ export default class Home {
         }
     }
     }
+    async searchPokemonByNameAndType() {
+        let searchValue = document.getElementById('search').value.toLowerCase();
+        let type1 = document.getElementById('s1').value;
+        type1 = await this.typeFrencheTotypeEnglish(type1);
+        let type2 = document.getElementById('s2').value;
+        type2 = await this.typeFrencheTotypeEnglish(type2);
+        let pokedex = await PokemonProvider.fetchPokedex();
+        let filteredPokemon = pokedex.filter(pokemon => pokemon.name["french"].toLowerCase().includes(searchValue) && (pokemon.type.includes(type1)|| type1=="Tous les types") && (pokemon.type.includes(type2)|| type2== "Tous les types"));
+        let html = "";
+        filteredPokemon.forEach(pokemon => {
+            html += /*html*/`
+                <div class="col">
+                    <div class="card">
+                        <p class="card-text">${pokemon.id}</p>
+                        <h2 class="card-title">${pokemon.name["french"]}</h2>
+                        <img src="${pokemon.img}" class="card-img-top" alt="${pokemon.name}">
+                    </div>
+                    </div>
+            `;
+        }
+        );
+        document.getElementById('pokemonList').innerHTML = html;
+    }
    
 
     after_render() {
@@ -115,7 +138,7 @@ export default class Home {
                     this.searchPokemonByType();
                 }
                 else {
-                    this.searchPokemonByName();
+                    this.searchPokemonByNameAndType();
                 }
             });
         } else {
