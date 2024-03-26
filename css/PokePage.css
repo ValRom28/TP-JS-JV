@@ -1,0 +1,137 @@
+.Fire{
+    background-color: #F08030;
+    color: white;
+    text-align: center;
+}
+
+.Water{
+    background-color: #6890F0;
+    color: white;
+    text-align: center;
+}
+
+.Grass{
+    background-color: #78C850;
+    color: white;
+    text-align: center;
+}
+
+.Electric{
+    background-color: #F8D030;
+    color: white;
+    text-align: center;
+}
+
+.Ice{
+    background-color: #98D8D8;
+    color: white;
+    text-align: center;
+}
+
+.Fighting{
+    background-color: #C03028;
+    color: white;
+    text-align: center;
+}
+
+.Poison{
+    background-color: #A040A0;
+    color: white;
+    text-align: center;
+}
+
+.Ground{
+    background-color: #E0C068;
+    color: white;
+    text-align: center;
+}
+
+.Flying{
+    background-color: #A890F0;
+    color: white;
+    text-align: center;
+}
+
+.Psychic{
+    background-color: #F85888;
+    color: white;
+    text-align: center;
+}
+
+.Bug{
+    background-color: #A8B820;
+    color: white;
+    text-align: center;
+}
+
+.Rock{
+    background-color: #B8A038;
+    color: white;
+    text-align: center;
+}
+
+.Ghost{
+    background-color: #705898;
+    color: white;
+    text-align: center;
+}
+
+.Dragon{
+    background-color: #7038F8;
+    color: white;
+    text-align: center;
+}
+
+.Dark{
+    background-color: #705848;
+    color: white;
+    text-align: center;
+}
+
+.Steel{
+    background-color: #B8B8D0;
+    color: white;
+    text-align: center;
+}
+
+.Fairy{
+    background-color: #EE99AC;
+    color: white;
+    text-align: center;
+}
+
+.Normal{
+    background-color: #A8A878;
+    color: white;
+    text-align: center;
+}
+
+.container {
+    display: flex;
+}
+
+main {
+    flex: 1;
+}
+
+.progress-bar {
+    background-color: #eee;
+    width: 100%;
+    height: 20px;
+}
+
+.progress-bar-value {
+    height: 100%;
+}
+
+.progress-bar.red .progress-bar-value {
+    background-color: #f00;
+}
+
+.progress-bar.orange .progress-bar-value {
+    background-color: #f90;
+}
+
+.progress-bar.green .progress-bar-value {
+    background-color: #0f0;
+}
