@@ -37,5 +37,21 @@ export default class PokemonProvider {
             return {}; // Retourne un objet vide en cas d'erreur
         }
     }
+    static async addNoteById(id, note) {
+        try {
+            const response = await fetch(`${ENDPOINT}/notes/${id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ notation: note })
+            });
+    
+            return await response.json();
+        } catch (err) {
+            console.log('Error in addNoteById', err);
+            throw err; // Renvoie l'erreur pour pouvoir la gérer plus tard
+        }
+    }
     
 }

@@ -5,7 +5,15 @@ export default class PokePage {
     async render() {
         let request = Utils.parseRequestURL()
         let pokemon = await PokemonProvider.fetchPokemonByID(request.id);
-        console.log(pokemon);
+        let notes = await PokemonProvider.fetchnoteByID(request.id);
+        let stars = '';
+        for (let i = 1; i <= 5; i++) {
+            if (i <= notes.notation) {
+                stars += `<span class="star v-${i} filled">★</span>`;
+            } else {
+                stars += `<span class="star v-${i}">☆</span>`;
+            }
+        }
         function getColorClass(value) {
             if (value < 60) {
                 return 'red';
@@ -15,6 +23,7 @@ export default class PokePage {
                 return 'green';
             }
         }
+
         
         return /*html*/`
             <div class="container">
@@ -29,6 +38,8 @@ export default class PokePage {
                 </ul>
                 <img src="${pokemon.img}" alt="${pokemon.name}">
                 <div class="note">
+                <li> Note : ${stars} </li>
+                </div>
                 
             </main>
 
@@ -84,9 +95,32 @@ export default class PokePage {
             </div>
         `;
     }
+    async updateStars(notation) {
+        let stars = '';
+        for (let i = 1; i <= 5; i++) {
+            if (i <= notation) {
+                stars += `<span class="star v-${i} filled">★</span>`;
+                console.log("non");
+            } else {
+                stars += `<span class="star v-${i}">☆</span>`;
+                console.log("oui");
+            }
+        }
+        document.querySelector('.note').innerHTML = `<li> Note : ${stars} </li>`;
+    }
     
-
     async after_render() {
-        // Nothing to do here
+        if (document.querySelector('.star')) {
+            document.querySelectorAll('.star').forEach(star => {
+                star.addEventListener('click', async () => {
+                    let notation = star.classList[1].split('-')[1];
+                    console.log(notation);
+                    let request = Utils.parseRequestURL();
+                    await PokemonProvider.addNoteById(request.id, notation);
+                    let notes = await PokemonProvider.fetchnoteByID(request.id);
+                    this.updateStars(notes.notation);
+                });
+            });
+        }
     }
 }

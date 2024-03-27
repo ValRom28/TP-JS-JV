@@ -138,3 +138,12 @@ main {
 .progress-bar.green .progress-bar-value {
     background-color: #0f0;
 }
+
+.star {
+    font-size: 2em;
+    color: #ccc;
+}
+
+.star.filled {
+    color: #f90;
+}
