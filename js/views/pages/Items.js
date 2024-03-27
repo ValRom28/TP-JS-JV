@@ -20,16 +20,12 @@ export default class Items {
                 ${ displayedObjects.map(object => 
                     /*html*/ `
                     <div class="col">
-                        <div class="card shadow-sm">
+                        <a href="#/item/${object.id}" class="card shadow-sm text-decoration-none">
+                            <img src="${object.img}" class="card-img-top" alt="${object.name["french"]}">
                             <div class="card-body">
-                                <h5 class="card-title">${object.name["english"]}</h5>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <a href="#/item/${object.id}" class="btn btn-sm btn-outline-secondary">Voir</a>
-                                    </div>
-                                </div>
+                                <h5 class="card-title">${object.name["french"]}</h5>
                             </div>
-                        </div>
+                        </a>
                     </div>`
                 ).join('\n ')
                 }

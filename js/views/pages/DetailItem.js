@@ -9,7 +9,15 @@ export default class DetailItem {
         let object = await ItemsProvider.getItemById(this.id);
 
         let view = /*html*/ `
-            <h2>${object.name["english"]}</h2>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <h1>${object.name["french"]}</h1>
+                        <img src="${object.img}" alt="${object.name["french"]}" class="img-fluid">
+                        <p>Prix : ${object.cost}₽</p>
+                    </div>
+                </div>
+            </div>
         `;
         return view;
     }

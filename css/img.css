@@ -1,0 +1,9 @@
+.img-fluid {
+    width: 10%;
+    height: auto;
+    image-rendering: pixelated;
+}
+
+.card-img-top {
+    image-rendering: pixelated;
+}
