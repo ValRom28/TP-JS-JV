@@ -20,10 +20,11 @@ export default class Home {
                     <div class="card">
                         <p class="card-text">${pokemon.id}</p>
                         <h2 class="card-title">${pokemon.name["french"]}</h2>
-                        <img src="${pokemon.img}" class="card-img-top" alt="${pokemon.name}">
+                        <img data-src="${pokemon.img}" class="lazy" alt="${pokemon.name}" loading="lazy">
                     </div>
                     </a>
                 </div>
+
             `;
         });
         
@@ -37,7 +38,7 @@ export default class Home {
                 <input type="text" id="search" placeholder="Rechercher un Pokémon">
                 <button id="filterButton"> Rechercher </button>
                 <div class="container">
-                    <div class="row row-cols-1 row-cols-md-3 g-4" id="pokemonList">
+                    <div class="row row-cols-1 row-cols-md-3 g-4"  id="pokemonList">
                         ${html}
                     </div>
             </main>
@@ -56,7 +57,7 @@ export default class Home {
                     <div class="card">
                         <p class="card-text">${pokemon.id}</p>
                         <h2 class="card-title">${pokemon.name["french"]}</h2>
-                        <img src="${pokemon.img}" class="card-img-top" alt="${pokemon.name}">
+                        <img data-src="${pokemon.img}" class="card-img-top lazy" alt="${pokemon.name}">
                     </div>
                     </a>
                 </div>
@@ -81,7 +82,7 @@ export default class Home {
                     <div class="card">
                         <p class="card-text">${pokemon.id}</p>
                         <h2 class="card-title">${pokemon.name["french"]}</h2>
-                        <img src="${pokemon.img}" class="card-img-top" alt="${pokemon.name}">
+                        <img data-src="${pokemon.img}" class="card-img-top lazy" alt="${pokemon.name}">
                     </div>
                     </a>
                 </div>
@@ -120,7 +121,7 @@ export default class Home {
                     <div class="card">
                         <p class="card-text">${pokemon.id}</p>
                         <h2 class="card-title">${pokemon.name["french"]}</h2>
-                        <img src="${pokemon.img}" class="card-img-top" alt="${pokemon.name}">
+                        <img data-src="${pokemon.img}" class="card-img-top lazy" alt="${pokemon.name}">
                     </div>
                     </a>
                 </div>
@@ -154,4 +155,34 @@ export default class Home {
         }
     }
 }
+document.addEventListener("DOMContentLoaded", function() {
+    var lazyloadImages = document.querySelectorAll(".lazy");   
+    console.log(lazyloadImages); 
+    var lazyloadThrottleTimeout;
+    
+    function lazyload () {
+      if(lazyloadThrottleTimeout) {
+        clearTimeout(lazyloadThrottleTimeout);
+      }    
+      
+      lazyloadThrottleTimeout = setTimeout(function() {
+          var scrollTop = window.scrollY;
+          lazyloadImages.forEach(function(img) {
+              if(img.offsetTop < (window.innerHeight + scrollTop)) {
+                img.src = img.dataset.src;
+                img.classList.remove('lazy');
+              }
+          });
+          if(lazyloadImages.length == 0) { 
+            document.removeEventListener("scroll", lazyload);
+            window.removeEventListener("resize", lazyload);
+            window.removeEventListener("orientationChange", lazyload);
+          }
+      }, 20);
+    }
+    
+    document.addEventListener("scroll", lazyload);
+    window.addEventListener("resize", lazyload);
+    window.addEventListener("orientationChange", lazyload);
+  })
 
