@@ -28,6 +28,8 @@ export default class PokePage {
                 <li> <p> ${pokemon.name["chinese"]} </p> </li>
                 </ul>
                 <img src="${pokemon.img}" alt="${pokemon.name}">
+                <div class="note">
+                
             </main>
 
             <aside>

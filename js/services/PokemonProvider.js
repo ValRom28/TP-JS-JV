@@ -28,5 +28,14 @@ export default class PokemonProvider {
             return {}; // Retourne un objet vide en cas d'erreur
         }
     }
+    static async fetchnoteByID(id) {
+        try {
+            const response = await fetch(`${ENDPOINT}/notes/${id}`);
+            return await response.json();
+        } catch (err) {
+            console.log('Error getting documents', err);
+            return {}; // Retourne un objet vide en cas d'erreur
+        }
+    }
     
 }
