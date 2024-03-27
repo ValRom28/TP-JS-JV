@@ -17340,5 +17340,612 @@
   },
   "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/151.png"
 }
+],
+"note": [
+  {
+    "id": 1,
+    "notation": "0"
+  },
+  {
+    "id": 2,
+    "notation": "0"
+  },
+  {
+    "id": 3,
+    "notation": "0"
+  },
+  {
+    "id": 4,
+    "notation": "0"
+  },
+  {
+    "id": 5,
+    "notation": "0"
+  },
+  {
+    "id": 6,
+    "notation": "0"
+  },
+  {
+    "id": 7,
+    "notation": "0"
+  },
+  {
+    "id": 8,
+    "notation": "0"
+  },
+  {
+    "id": 9,
+    "notation": "0"
+  },
+  {
+    "id": 10,
+    "notation": "0"
+  },
+  {
+    "id": 11,
+    "notation": "0"
+  },
+  {
+    "id": 12,
+    "notation": "0"
+  },
+  {
+    "id": 13,
+    "notation": "0"
+  },
+  {
+    "id": 14,
+    "notation": "0"
+  },
+  {
+    "id": 15,
+    "notation": "0"
+  },
+  {
+    "id": 16,
+    "notation": "0"
+  },
+  {
+    "id": 17,
+    "notation": "0"
+  },
+  {
+    "id": 18,
+    "notation": "0"
+  },
+  {
+    "id": 19,
+    "notation": "0"
+  },
+  {
+    "id": 20,
+    "notation": "0"
+  },
+  {
+    "id": 21,
+    "notation": "0"
+  },
+  {
+    "id": 22,
+    "notation": "0"
+  },
+  {
+    "id": 23,
+    "notation": "0"
+  },
+  {
+    "id": 24,
+    "notation": "0"
+  },
+  {
+    "id": 25,
+    "notation": "0"
+  },
+  {
+    "id": 26,
+    "notation": "0"
+  },
+  {
+    "id": 27,
+    "notation": "0"
+  },
+  {
+    "id": 28,
+    "notation": "0"
+  },
+  {
+    "id": 29,
+    "notation": "0"
+  },
+  {
+    "id": 30,
+    "notation": "0"
+  },
+  {
+    "id": 31,
+    "notation": "0"
+  },
+  {
+    "id": 32,
+    "notation": "0"
+  },
+  {
+    "id": 33,
+    "notation": "0"
+  },
+  {
+    "id": 34,
+    "notation": "0"
+  },
+  {
+    "id": 35,
+    "notation": "0"
+  },
+  {
+    "id": 36,
+    "notation": "0"
+  },
+  {
+    "id": 37,
+    "notation": "0"
+  },
+  {
+    "id": 38,
+    "notation": "0"
+  },
+  {
+    "id": 39,
+    "notation": "0"
+  },
+  {
+    "id": 40,
+    "notation": "0"
+  },
+  {
+    "id": 41,
+    "notation": "0"
+  },
+  {
+    "id": 42,
+    "notation": "0"
+  },
+  {
+    "id": 43,
+    "notation": "0"
+  },
+  {
+    "id": 44,
+    "notation": "0"
+  },
+  {
+    "id": 45,
+    "notation": "0"
+  },
+  {
+    "id": 46,
+    "notation": "0"
+  },
+  {
+    "id": 47,
+    "notation": "0"
+  },
+  {
+    "id": 48,
+    "notation": "0"
+  },
+  {
+    "id": 49,
+    "notation": "0"
+  },
+  {
+    "id": 50,
+    "notation": "0"
+  },
+  {
+    "id": 51,
+    "notation": "0"
+  },
+  {
+    "id": 52,
+    "notation": "0"
+  },
+  {
+    "id": 53,
+    "notation": "0"
+  },
+  {
+    "id": 54,
+    "notation": "0"
+  },
+  {
+    "id": 55,
+    "notation": "0"
+  },
+  {
+    "id": 56,
+    "notation": "0"
+  },
+  {
+    "id": 57,
+    "notation": "0"
+  },
+  {
+    "id": 58,
+    "notation": "0"
+  },
+  {
+    "id": 59,
+    "notation": "0"
+  },
+  {
+    "id": 60,
+    "notation": "0"
+  },
+  {
+    "id": 61,
+    "notation": "0"
+  },
+  {
+    "id": 62,
+    "notation": "0"
+  },
+  {
+    "id": 63,
+    "notation": "0"
+  },
+  {
+    "id": 64,
+    "notation": "0"
+  },
+  {
+    "id": 65,
+    "notation": "0"
+  },
+  {
+    "id": 66,
+    "notation": "0"
+  },
+  {
+    "id": 67,
+    "notation": "0"
+  },
+  {
+    "id": 68,
+    "notation": "0"
+  },
+  {
+    "id": 69,
+    "notation": "0"
+  },
+  {
+    "id": 70,
+    "notation": "0"
+  },
+  {
+    "id": 71,
+    "notation": "0"
+  },
+  {
+    "id": 72,
+    "notation": "0"
+  },
+  {
+    "id": 73,
+    "notation": "0"
+  },
+  {
+    "id": 74,
+    "notation": "0"
+  },
+  {
+    "id": 75,
+    "notation": "0"
+  },
+  {
+    "id": 76,
+    "notation": "0"
+  },
+  {
+    "id": 77,
+    "notation": "0"
+  },
+  {
+    "id": 78,
+    "notation": "0"
+  },
+  {
+    "id": 79,
+    "notation": "0"
+  },
+  {
+    "id": 80,
+    "notation": "0"
+  },
+  {
+    "id": 81,
+    "notation": "0"
+  },
+  {
+    "id": 82,
+    "notation": "0"
+  },
+  {
+    "id": 83,
+    "notation": "0"
+  },
+  {
+    "id": 84,
+    "notation": "0"
+  },
+  {
+    "id": 85,
+    "notation": "0"
+  },
+  {
+    "id": 86,
+    "notation": "0"
+  },
+  {
+    "id": 87,
+    "notation": "0"
+  },
+  {
+    "id": 88,
+    "notation": "0"
+  },
+  {
+    "id": 89,
+    "notation": "0"
+  },
+  {
+    "id": 90,
+    "notation": "0"
+  },
+  {
+    "id": 91,
+    "notation": "0"
+  },
+  {
+    "id": 92,
+    "notation": "0"
+  },
+  {
+    "id": 93,
+    "notation": "0"
+  },
+  {
+    "id": 94,
+    "notation": "0"
+  },
+  {
+    "id": 95,
+    "notation": "0"
+  },
+  {
+    "id": 96,
+    "notation": "0"
+  },
+  {
+    "id": 97,
+    "notation": "0"
+  },
+  {
+    "id": 98,
+    "notation": "0"
+  },
+  {
+    "id": 99,
+    "notation": "0"
+  },
+  {
+    "id": 100,
+    "notation": "0"
+  },
+  {
+    "id": 101,
+    "notation": "0"
+  },
+  {
+    "id": 102,
+    "notation": "0"
+  },
+  {
+    "id": 103,
+    "notation": "0"
+  },
+  {
+    "id": 104,
+    "notation": "0"
+  },
+  {
+    "id": 105,
+    "notation": "0"
+  },
+  {
+    "id": 106,
+    "notation": "0"
+  },
+  {
+    "id": 107,
+    "notation": "0"
+  },
+  {
+    "id": 108,
+    "notation": "0"
+  },
+  {
+    "id": 109,
+    "notation": "0"
+  },
+  {
+    "id": 110,
+    "notation": "0"
+  },
+  {
+    "id": 111,
+    "notation": "0"
+  },
+  {
+    "id": 112,
+    "notation": "0"
+  },
+  {
+    "id": 113,
+    "notation": "0"
+  },
+  {
+    "id": 114,
+    "notation": "0"
+  },
+  {
+    "id": 115,
+    "notation": "0"
+  },
+  {
+    "id": 116,
+    "notation": "0"
+  },
+  {
+    "id": 117,
+    "notation": "0"
+  },
+  {
+    "id": 118,
+    "notation": "0"
+  },
+  {
+    "id": 119,
+    "notation": "0"
+  },
+  {
+    "id": 120,
+    "notation": "0"
+  },
+  {
+    "id": 121,
+    "notation": "0"
+  },
+  {
+    "id": 122,
+    "notation": "0"
+  },
+  {
+    "id": 123,
+    "notation": "0"
+  },
+  {
+    "id": 124,
+    "notation": "0"
+  },
+  {
+    "id": 125,
+    "notation": "0"
+  },
+  {
+    "id": 126,
+    "notation": "0"
+  },
+  {
+    "id": 127,
+    "notation": "0"
+  },
+  {
+    "id": 128,
+    "notation": "0"
+  },
+  {
+    "id": 129,
+    "notation": "0"
+  },
+  {
+    "id": 130,
+    "notation": "0"
+  },
+  {
+    "id": 131,
+    "notation": "0"
+  },
+  {
+    "id": 132,
+    "notation": "0"
+  },
+  {
+    "id": 133,
+    "notation": "0"
+  },
+  {
+    "id": 134,
+    "notation": "0"
+  },
+  {
+    "id": 135,
+    "notation": "0"
+  },
+  {
+    "id": 136,
+    "notation": "0"
+  },
+  {
+    "id": 137,
+    "notation": "0"
+  },
+  {
+    "id": 138,
+    "notation": "0"
+  },
+  {
+    "id": 139,
+    "notation": "0"
+  },
+  {
+    "id": 140,
+    "notation": "0"
+  },
+  {
+    "id": 141,
+    "notation": "0"
+  },
+  {
+    "id": 142,
+    "notation": "0"
+  },
+  {
+    "id": 143,
+    "notation": "0"
+  },
+  {
+    "id": 144,
+    "notation": "0"
+  },
+  {
+    "id": 145,
+    "notation": "0"
+  },
+  {
+    "id": 146,
+    "notation": "0"
+  },
+  {
+    "id": 147,
+    "notation": "0"
+  },
+  {
+    "id": 148,
+    "notation": "0"
+  },
+  {
+    "id": 149,
+    "notation": "0"
+  },
+  {
+    "id": 150,
+    "notation": "0"
+  },
+  {
+    "id": 151,
+    "notation": "0"
+  }
 ]
 }
+
