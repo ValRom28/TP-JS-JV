@@ -1,8 +1,9 @@
 import PokemonProvider from "../../services/PokemonProvider.js";
+import TypesProvider from "../../services/TypesProvider.js";
 
 export default class Home {
     async render() {
-        let types = await PokemonProvider.fetchTypes();
+        let types = await TypesProvider.fetchTypes();
         let pokedex = await PokemonProvider.fetchPokedex();
         let html = "";
         let selector1 = "<select id='s1'> <option>Tous les types</option> "; 
@@ -15,15 +16,15 @@ export default class Home {
 
         pokedex.forEach(pokemon => {
             html += /*html*/`
-                <div class="col">
-                <a href="#/pokemon/${pokemon.id}">
-                    <div class="card">
-                        <p class="card-text">${pokemon.id}</p>
-                        <h2 class="card-title">${pokemon.name["french"]}</h2>
+            <div class="col">
+                <a href="#/pokemon/${pokemon.id}" class="card shadow-sm text-decoration-none">
+                    <div class="card-body">
+                        <p class="card-text">N°${pokemon.id}</p>
+                        <h4 class="card-title">${pokemon.name["french"]}</h4>
                         <img src="${pokemon.img}" class="card-img-top" alt="${pokemon.name}">
                     </div>
-                    </a>
-                </div>
+                </a>
+            </div>
             `;
         });
         
@@ -94,7 +95,7 @@ export default class Home {
             return typeF;
         }
         else{
-        let types = await PokemonProvider.fetchTypes();
+        let types = await TypesProvider.fetchTypes();
         let type = types.find(type => type.french == typeF);
         if (type) {
             return type.english;

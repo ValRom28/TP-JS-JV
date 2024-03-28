@@ -2,31 +2,29 @@ import Home from './views/pages/Home.js';
 import Items from './views/pages/Items.js';
 import DetailItem from './views/pages/DetailItem.js';
 import PokePage from './views/pages/pokePage.js';
+import Moves from './views/pages/Moves.js';
+import DetailMove from './views/pages/DetailMove.js';
 import Error404 from './views/pages/Error404.js';
 
 import Utils from './services/Utils.js';
 
-// List of supported routes. Any url other than these routes will throw a 404 error
 const routes = {
-    '/'                     : Home
-    , '/items'           : Items
+    '/'                 : Home
+    , '/items'          : Items
     , '/item/:id'       : DetailItem
-    , '/pokemon/:id'              : PokePage
+    , '/pokemon/:id'    : PokePage
+    , '/moves'          : Moves
+    , '/move/:id'       : DetailMove
+    , '/404'            : Error404
 };
 
-// The router code. Takes a URL, checks against the list of supported routes and then renders the corresponding content page.
 const router = async () => {
 
-    // Lazy load view element:
     const content = null || document.querySelector('#content');
 
-    // Get the parsed URl from the addressbar
     let request = Utils.parseRequestURL()
 
-    // Parse the URL and if it has an id part, change it with the string ":id"
     let parsedURL = (request.resource ? '/' + request.resource : '/') + (request.id ? '/:id' : '') + (request.verb ? '/' + request.verb : '')
-    // Get the page from our hash of supported routes.
-    // If the parsed URL is not in our list of supported routes, select the 404 page instead
     let page = routes[parsedURL] ? new routes[parsedURL] : Error404
 
     if (request.id) {
@@ -37,12 +35,10 @@ const router = async () => {
     content.innerHTML = await page.render();
     await page.after_render();
   
-    if (page instanceof Items) {
+    if (page instanceof Items || page instanceof Moves) {
         await page.bindEvents();
     }
 }
 
-// Listen on hash change:
 window.addEventListener('hashchange', router);
-// Listen on page load:
 window.addEventListener('load', router);
