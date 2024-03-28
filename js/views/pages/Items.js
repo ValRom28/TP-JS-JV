@@ -3,21 +3,17 @@ import ItemsProvider from "../../services/ItemsProvider.js";
 export default class Items {
     constructor() {
         this.currentPage = 1;
-        this.itemsPerPage = 18; // Nombre d'articles par page
+        this.itemsPerPage = 12;
     }
 
     async render() {
-        let objects = await ItemsProvider.getItems();
-        let startIndex = (this.currentPage - 1) * this.itemsPerPage;
-        let endIndex = startIndex + this.itemsPerPage;
-        let displayedObjects = objects.slice(startIndex, endIndex);
-
-        let pagination = this.renderPagination(objects.length);
+        let objects = await ItemsProvider.getItems(this.currentPage, this.itemsPerPage);
+        let pagination = this.renderPagination(objects.items);
 
         let view = /*html*/ `
             <h2>Tous les objets</h2>
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                ${ displayedObjects.map(object => 
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
+                ${objects.data.map(object => 
                     /*html*/ `
                     <div class="col">
                         <a href="#/item/${object.id}" class="card shadow-sm text-decoration-none">
@@ -27,8 +23,7 @@ export default class Items {
                             </div>
                         </a>
                     </div>`
-                ).join('\n ')
-                }
+                ).join('\n')}
             </div>
             ${pagination}
         `;
