@@ -1705,7 +1705,8 @@
       "jname": "はたく",
       "power": 40,
       "pp": 35,
-      "type": "Normal"
+      "type": "Normal",
+      "video": "https://www.pokepedia.fr/images/8/8e/%C3%89cras%27Face_EV.mp4"
     },
     {
       "accuracy": 100,
