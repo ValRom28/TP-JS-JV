@@ -1,8 +1,8 @@
 import { ENDPOINT } from '../config.js';
 
 export default class MovesProvider {
-    static async getMoves() {
-        const response = await fetch(`${ENDPOINT}/moves`);
+    static async getMoves(page, perPage) {
+        const response = await fetch(`${ENDPOINT}/moves?_page=${page}&_per_page=${perPage}`);
         try {
             const attacks = await response.json();
             return attacks;

@@ -8,17 +8,13 @@ export default class Moves {
     }
 
     async render() {
-        this.moves = await MovesProvider.getMoves();
-        let startIndex = (this.currentPage - 1) * this.itemsPerPage;
-        let endIndex = startIndex + this.itemsPerPage;
-        let displayedMoves = this.moves.slice(startIndex, endIndex);
-        
-        let pagination = this.renderPagination(this.moves.length);
+        this.moves = await MovesProvider.getMoves(this.currentPage, this.itemsPerPage);
+        let pagination = this.renderPagination(this.moves.items);
         
         return `
             <h2>Toutes les capacités</h2>
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
-                ${displayedMoves.map(move => 
+                ${this.moves.data.map(move => 
                     /*html*/ `
                     <div class="col">
                         <a href="#/move/${move.id}" class="card shadow-sm text-decoration-none">
@@ -37,9 +33,9 @@ export default class Moves {
     renderPagination(totalItems) {
         let totalPages = Math.ceil(totalItems / this.itemsPerPage);
         let pages = '';
-
+    
         for (let i = 1; i <= totalPages; i++) {
-            if (i === 1 || i === totalPages || (i >= this.currentPage - 1 && i <= this.currentPage + 1)) {
+            if (i === 1 || i === totalPages || Math.abs(i - this.currentPage) <= 1) {
                 pages += `<li class="page-item ${i === this.currentPage ? 'active' : ''}"><a class="page-link" href="#/moves" data-page="${i}">${i}</a></li>`;
             } else {
                 if (i === this.currentPage - 3 || i === this.currentPage + 3) {
@@ -47,7 +43,7 @@ export default class Moves {
                 }
             }
         }
-
+    
         let pagination = /*html*/ `
             <nav aria-label="Page navigation">
                 <ul class="pagination">
@@ -61,7 +57,7 @@ export default class Moves {
                 </ul>
             </nav>
         `;
-
+    
         return pagination;
     }
 
