@@ -1,6 +1,7 @@
 import Home from './views/pages/Home.js';
 import Items from './views/pages/Items.js';
 import DetailItem from './views/pages/DetailItem.js';
+import PokePage from './views/pages/pokePage.js';
 import Error404 from './views/pages/Error404.js';
 
 import Utils from './services/Utils.js';
@@ -10,6 +11,7 @@ const routes = {
     '/'                     : Home
     , '/items'           : Items
     , '/item/:id'       : DetailItem
+    , '/pokemon/:id'              : PokePage
 };
 
 // The router code. Takes a URL, checks against the list of supported routes and then renders the corresponding content page.
@@ -33,7 +35,8 @@ const router = async () => {
     
     console.log(page)
     content.innerHTML = await page.render();
-
+    await page.after_render();
+  
     if (page instanceof Items) {
         await page.bindEvents();
     }
