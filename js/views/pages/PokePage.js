@@ -23,7 +23,6 @@ export default class PokePage {
                 return 'green';
             }
         }
-
         
         return /*html*/`
             <div class="container">
@@ -119,8 +118,11 @@ export default class PokePage {
                     await PokemonProvider.addNoteById(request.id, notation);
                     let notes = await PokemonProvider.fetchnoteByID(request.id);
                     this.updateStars(notes.notation);
+                    window.location.reload();
                 });
             });
         }
     }
+    
 }
+
