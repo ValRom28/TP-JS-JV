@@ -53,5 +53,14 @@ export default class PokemonProvider {
             throw err; // Renvoie l'erreur pour pouvoir la gérer plus tard
         }
     }
+    static async fetchPokemonShiny(id) {
+        try {
+            const response = await fetch(`${ENDPOINT}/shiny/${id}`);
+            return await response.json();
+        } catch (err) {
+            console.log('Error getting documents', err);
+            return {}; // Retourne un objet vide en cas d'erreur
+        }
+    }
     
 }

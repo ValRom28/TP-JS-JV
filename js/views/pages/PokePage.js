@@ -35,7 +35,8 @@ export default class PokePage {
                 <li> <p> ${pokemon.name["japanese"]} </p> </li>
                 <li> <p> ${pokemon.name["chinese"]} </p> </li>
                 </ul>
-                <img src="${pokemon.img}" alt="${pokemon.name}">
+                <p class="color"> ✨ </p>
+                <img src="${pokemon.img}" alt="${pokemon.name}" class="normal">
                 <div class="note">
                 <li> Note : ${stars} </li>
                 </div>
@@ -107,6 +108,23 @@ export default class PokePage {
         }
         document.querySelector('.note').innerHTML = `<li> Note : ${stars} </li>`;
     }
+    async shiny() {
+        if (document.querySelector('img.shiny')) {
+            let pokemon = await PokemonProvider.fetchPokemonByID(request.id);
+            let normal = pokemon.img;
+            document.querySelector('img.shiny').src = normal;
+            document.querySelector('img.shiny').classList.add("normal");
+            document.querySelector('img.shiny').classList.remove("shiny");
+        }
+        else {
+        let request = Utils.parseRequestURL();
+        let pokemon = await PokemonProvider.fetchPokemonShiny(request.id);
+        let shiny = pokemon.img;
+        document.querySelector('img.normal').src = shiny;
+        document.querySelector('img.normal').classList.add("shiny");
+        document.querySelector('img.normal').classList.remove("normal");
+        }
+    }
     
     async after_render() {
         if (document.querySelector('.star')) {
@@ -120,6 +138,11 @@ export default class PokePage {
                     this.updateStars(notes.notation);
                     window.location.reload();
                 });
+            });
+        }
+        if (document.querySelector('.color')) {
+            document.querySelector('.color').addEventListener('click', async () => {
+                this.shiny();
             });
         }
     }

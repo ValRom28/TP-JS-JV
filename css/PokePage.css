@@ -147,3 +147,11 @@ main {
 .star.filled {
     color: #f90;
 }
+
+img.shiny, img.normal {
+    width: 20rem;
+    height: 20rem;
+    margin: 0 auto;
+    padding: 0;
+    image-rendering: pixelated;
+}
