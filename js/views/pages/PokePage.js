@@ -1,11 +1,13 @@
 import PokemonProvider from "../../services/PokemonProvider.js";
+import NoteProvider from "../../services/NoteProvider.js";
+import ShinyProvider from "../../services/ShinyProvider.js";
 import Utils from "../../services/Utils.js";
 
 export default class PokePage {
     async render() {
         let request = Utils.parseRequestURL()
         let pokemon = await PokemonProvider.fetchPokemonByID(request.id);
-        let notes = await PokemonProvider.fetchnoteByID(request.id);
+        let notes = await NoteProvider.fetchNoteByID(request.id);
         let stars = '';
         for (let i = 1; i <= 5; i++) {
             if (i <= notes.notation) {
@@ -118,7 +120,7 @@ export default class PokePage {
         }
         else {
         let request = Utils.parseRequestURL();
-        let pokemon = await PokemonProvider.fetchPokemonShiny(request.id);
+        let pokemon = await ShinyProvider.fetchPokemonShiny(request.id);
         let shiny = pokemon.img;
         document.querySelector('img.normal').src = shiny;
         document.querySelector('img.normal').classList.add("shiny");
@@ -133,8 +135,8 @@ export default class PokePage {
                     let notation = star.classList[1].split('-')[1];
                     console.log(notation);
                     let request = Utils.parseRequestURL();
-                    await PokemonProvider.addNoteById(request.id, notation);
-                    let notes = await PokemonProvider.fetchnoteByID(request.id);
+                    await NoteProvider.addNoteById(request.id, notation);
+                    let notes = await NoteProvider.fetchNoteByID(request.id);
                     this.updateStars(notes.notation);
                     window.location.reload();
                 });

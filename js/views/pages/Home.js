@@ -1,8 +1,9 @@
 import PokemonProvider from "../../services/PokemonProvider.js";
+import TypesProvider from "../../services/TypesProvider.js";
 
 export default class Home {
     async render() {
-        let types = await PokemonProvider.fetchTypes();
+        let types = await TypesProvider.fetchTypes();
         let pokedex = await PokemonProvider.fetchPokedex();
         let html = "";
         let selector1 = "<select id='s1'> <option>Tous les types</option> "; 
@@ -94,7 +95,7 @@ export default class Home {
             return typeF;
         }
         else{
-        let types = await PokemonProvider.fetchTypes();
+        let types = await TypesProvider.fetchTypes();
         let type = types.find(type => type.french == typeF);
         if (type) {
             return type.english;
