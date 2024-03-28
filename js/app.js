@@ -3,17 +3,19 @@ import Items from './views/pages/Items.js';
 import DetailItem from './views/pages/DetailItem.js';
 import PokePage from './views/pages/pokePage.js';
 import Moves from './views/pages/Moves.js';
+import DetailMove from './views/pages/DetailMove.js';
 import Error404 from './views/pages/Error404.js';
 
 import Utils from './services/Utils.js';
 
 const routes = {
-    '/'                     : Home
-    , '/items'           : Items
+    '/'                 : Home
+    , '/items'          : Items
     , '/item/:id'       : DetailItem
-    , '/pokemon/:id'              : PokePage
-    , '/moves'              : Moves
-    , '/404'                : Error404
+    , '/pokemon/:id'    : PokePage
+    , '/moves'          : Moves
+    , '/move/:id'       : DetailMove
+    , '/404'            : Error404
 };
 
 const router = async () => {
@@ -33,7 +35,7 @@ const router = async () => {
     content.innerHTML = await page.render();
     await page.after_render();
   
-    if (page instanceof Items) {
+    if (page instanceof Items || page instanceof Moves) {
         await page.bindEvents();
     }
 }

@@ -16,15 +16,15 @@ export default class Home {
 
         pokedex.forEach(pokemon => {
             html += /*html*/`
-                <div class="col">
-                <a href="#/pokemon/${pokemon.id}">
-                    <div class="card">
-                        <p class="card-text">${pokemon.id}</p>
-                        <h2 class="card-title">${pokemon.name["french"]}</h2>
+            <div class="col">
+                <a href="#/pokemon/${pokemon.id}" class="card shadow-sm text-decoration-none">
+                    <div class="card-body">
+                        <p class="card-text">N°${pokemon.id}</p>
+                        <h4 class="card-title">${pokemon.name["french"]}</h4>
                         <img src="${pokemon.img}" class="card-img-top" alt="${pokemon.name}">
                     </div>
-                    </a>
-                </div>
+                </a>
+            </div>
             `;
         });
         

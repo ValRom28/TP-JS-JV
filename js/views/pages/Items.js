@@ -17,9 +17,9 @@ export default class Items {
                     /*html*/ `
                     <div class="col">
                         <a href="#/item/${object.id}" class="card shadow-sm text-decoration-none">
-                            <img src="${object.img}" class="card-img-top" alt="${object.name["french"]}">
                             <div class="card-body">
-                                <h5 class="card-title">${object.name["french"]}</h5>
+                                <h4 class="card-title">${object.name["french"]}</h4>
+                                <img src="${object.img}" class="card-img-top" alt="${object.name["french"]}">
                             </div>
                         </a>
                     </div>`
