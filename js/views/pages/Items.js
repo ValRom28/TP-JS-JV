@@ -12,7 +12,9 @@ export default class Items {
 
         let view = /*html*/ `
             <h2>Tous les objets</h2>
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
+            <input type="text" id="search" placeholder="Rechercher un objet">
+            <button id="filterButton">Rechercher</button>
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4" id="itemList">
                 ${objects.data.map(object => 
                     /*html*/ `
                     <div class="col">
@@ -25,10 +27,31 @@ export default class Items {
                     </div>`
                 ).join('\n')}
             </div>
-            ${pagination}
-        `;
-
+            <div id="pagination">${pagination}</div>`;
         return view;
+    }
+
+    async searchByName() {
+        let searchValue = document.getElementById('search').value.toLowerCase();
+        let objects = await ItemsProvider.getAllItems();
+
+        let filteredObjects = objects.filter(object => object.name["french"].toLowerCase().includes(searchValue));
+        let view = "";
+        filteredObjects.forEach(object => {
+            view += /*html*/ `
+                <div class="col">
+                    <a href="#/item/${object.id}" class="card shadow-sm text-decoration-none">
+                        <div class="card-body">
+                            <h4 class="card-title">${object.name["french"]}</h4>
+                            <img src="${object.img}" class="card-img-top" alt="${object.name["french"]}">
+                        </div>
+                    </a>
+                </div>
+            `;
+        });
+        
+        document.getElementById('itemList').innerHTML = view;
+        document.getElementById('pagination').style.display = 'none';
     }
 
     renderPagination(totalItems) {
@@ -86,5 +109,11 @@ export default class Items {
     }
 
     async after_render() {
+        let filterButton = document.getElementById('filterButton');
+        if (filterButton) {
+            filterButton.addEventListener('click', async () => {
+                this.searchByName();
+            });
+        }
     }
 }
