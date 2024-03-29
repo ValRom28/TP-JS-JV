@@ -12,6 +12,17 @@ export default class MovesProvider {
         }
     }
 
+    static async getAllMoves() {
+        const response = await fetch(`${ENDPOINT}/moves`);
+        try {
+            const moves = await response.json();
+            return moves;
+        } catch (error) {
+            console.error('Error while fetching moves', error);
+            return [];
+        }
+    }
+
     static async getMove(id) {
         const response = await fetch(`${ENDPOINT}/moves/${id}`);
         try {
