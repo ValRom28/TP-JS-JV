@@ -113,21 +113,22 @@ export default class PokePage {
             </div>
         `;
     }
+
     async updateStars(notation) {
         let stars = '';
         for (let i = 1; i <= 5; i++) {
             if (i <= notation) {
                 stars += `<span class="star v-${i} filled">★</span>`;
-                console.log("non");
             } else {
                 stars += `<span class="star v-${i}">☆</span>`;
-                console.log("oui");
             }
         }
         document.querySelector('.note').innerHTML = `<li> Note : ${stars} </li>`;
     }
+
     async shiny() {
         if (document.querySelector('img.shiny')) {
+            let request = Utils.parseRequestURL();
             let pokemon = await PokemonProvider.fetchPokemonByID(request.id);
             let normal = pokemon.img;
             document.querySelector('img.shiny').src = normal;
@@ -135,14 +136,15 @@ export default class PokePage {
             document.querySelector('img.shiny').classList.remove("shiny");
         }
         else {
-        let request = Utils.parseRequestURL();
-        let pokemon = await ShinyProvider.fetchPokemonShiny(request.id);
-        let shiny = pokemon.img;
-        document.querySelector('img.normal').src = shiny;
-        document.querySelector('img.normal').classList.add("shiny");
-        document.querySelector('img.normal').classList.remove("normal");
+            let request = Utils.parseRequestURL();
+            let pokemon = await ShinyProvider.fetchPokemonShiny(request.id);
+            let shiny = pokemon.img;
+            document.querySelector('img.normal').src = shiny;
+            document.querySelector('img.normal').classList.add("shiny");
+            document.querySelector('img.normal').classList.remove("normal");
         }
     }
+    
     async addEquipe() {
         let request = Utils.parseRequestURL();
         let position = document.getElementById('position').value;
