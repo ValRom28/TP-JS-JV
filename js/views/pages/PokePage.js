@@ -21,8 +21,13 @@ export default class PokePage {
                 return 'red';
             } else if (value < 100) {
                 return 'orange';
-            } else {
+            } else if (value < 120) {
                 return 'green';
+            } 
+            else if (value < 150) {
+                return 'supergreen';
+            } else {
+                return 'blue';
             }
         }
         

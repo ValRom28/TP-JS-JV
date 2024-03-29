@@ -48,8 +48,9 @@ export default class Home {
                     <div class="row row-cols-1 row-cols-md-3 g-4" id="pokemonList">
                         ${html}
                     </div>
+                </div>
+                <div id="pagination">${pagination}</div> <!-- Ajouter la pagination ici -->
             </main>
-            ${pagination}
         `;
     }
 
@@ -73,7 +74,10 @@ export default class Home {
             `;
         });
         document.getElementById('pokemonList').innerHTML = html;
+
+        document.getElementById('pagination').style.display = 'none';
     }
+
     async searchPokemonByType() {
         let type1 = document.getElementById('s1').value;
         let type2 = document.getElementById('s2').value;
@@ -98,22 +102,10 @@ export default class Home {
             `;
         });
         document.getElementById('pokemonList').innerHTML = html;
+
+        document.getElementById('pagination').style.display = 'none';
     }
-    async typeFrencheTotypeEnglish(typeF){
-        if (typeF == "Tous les types") {
-            return typeF;
-        }
-        else{
-        let types = await TypesProvider.fetchTypes();
-        let type = types.find(type => type.french == typeF);
-        if (type) {
-            return type.english;
-        } else {
-            // handle error, e.g. throw an error or return a default value
-            throw new Error(`No type found for ${typeF}`);
-        }
-    }
-    }
+    
     async searchPokemonByNameAndType() {
         let searchValue = document.getElementById('search').value.toLowerCase();
         let type1 = document.getElementById('s1').value;
@@ -139,6 +131,24 @@ export default class Home {
         }
         );
         document.getElementById('pokemonList').innerHTML = html;
+
+        document.getElementById('pagination').style.display = 'none';
+    }
+
+    async typeFrencheTotypeEnglish(typeF){
+        if (typeF == "Tous les types") {
+            return typeF;
+        }
+        else {
+            let types = await TypesProvider.fetchTypes();
+            let type = types.find(type => type.french == typeF);
+            if (type) {
+                return type.english;
+            } else {
+                // handle error, e.g. throw an error or return a default value
+                throw new Error(`No type found for ${typeF}`);
+            }
+        }
     }
    
     renderPagination(totalItems) {
