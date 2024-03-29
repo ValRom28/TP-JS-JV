@@ -38,7 +38,7 @@ const router = async () => {
     content.innerHTML = await page.render();
     await page.after_render();
   
-    if (page instanceof Items || page instanceof Moves) {
+    if (page instanceof Items || page instanceof Moves || page instanceof Home) {
         await page.bindEvents();
     }
 }
