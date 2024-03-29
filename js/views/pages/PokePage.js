@@ -143,7 +143,6 @@ export default class PokePage {
                     await NoteProvider.addNoteById(request.id, notation);
                     let notes = await NoteProvider.fetchNoteByID(request.id);
                     this.updateStars(notes.notation);
-                    window.location.reload();
                 });
             });
         }

@@ -28,7 +28,7 @@ export default class Home {
                     <div class="card-body">
                         <p class="card-text">N°${pokemon.id}</p>
                         <h4 class="card-title">${pokemon.name["french"]}</h4>
-                        <img src="${pokemon.img}" class="card-img-top" alt="${pokemon.name}">
+                        <img src="${pokemon.img}" class="card-img-top" alt="${pokemon.name}" loading="lazy">
                     </div>
                 </a>
             </div>
