@@ -39,7 +39,7 @@ export default class Home {
         selector2+="</select>"
         return /*html*/`
             <main>
-            <h1> POKEDEX </h1>
+            <h2>Pokedex</h2>
                 ${selector1}
                 ${selector2}
                 <input type="text" id="search" placeholder="Rechercher un Pokémon">
@@ -49,7 +49,7 @@ export default class Home {
                         ${html}
                     </div>
                 </div>
-                <div id="pagination">${pagination}</div> <!-- Ajouter la pagination ici -->
+                <div id="pagination">${pagination}</div>
             </main>
         `;
     }
