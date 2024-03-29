@@ -20,4 +20,13 @@ export default class ItemsProvider {
             return null;
         }
     }
+    static async fetchItemByID(id) {
+        try {
+            const response = await fetch(`${ENDPOINT}/items/${id}`);
+            return await response.json();
+        } catch (err) {
+            console.log('Error getting documents', err);
+            return {}; // Retourne un objet vide en cas d'erreur
+        }
+    }
 }

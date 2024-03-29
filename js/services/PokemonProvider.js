@@ -20,4 +20,5 @@ export default class PokemonProvider {
             return {}; // Retourne un objet vide en cas d'erreur
         }
     }
+    
 }

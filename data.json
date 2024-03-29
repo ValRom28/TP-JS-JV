@@ -13111,5 +13111,73 @@
       "id": "151",
       "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/151.png"
     }
+  ],
+  "equipe": [
+    {
+      "idPokemon": "151",
+      "id": "1",
+      "idObjet": "307",
+      "attaques": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ]
+    },
+    {
+      "id": "2",
+      "idPokemon": "68",
+      "idObjet": "2",
+      "attaques": [
+        "5",
+        "6",
+        "7",
+        "8"
+      ]
+    },
+    {
+      "id": "3",
+      "idPokemon": "6",
+      "idObjet": "3",
+      "attaques": [
+        "9",
+        "10",
+        "11",
+        "12"
+      ]
+    },
+    {
+      "id": "4",
+      "idPokemon": "4",
+      "idObjet": "4",
+      "attaques": [
+        "13",
+        "14",
+        "15",
+        "16"
+      ]
+    },
+    {
+      "id": "5",
+      "idPokemon": "5",
+      "idObjet": "5",
+      "attaques": [
+        "17",
+        "18",
+        "19",
+        "20"
+      ]
+    },
+    {
+      "id": "6",
+      "idPokemon": "6",
+      "idObjet": "6",
+      "attaques": [
+        "21",
+        "22",
+        "23",
+        "24"
+      ]
+    }
   ]
 }
