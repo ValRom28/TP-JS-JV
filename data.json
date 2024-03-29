@@ -13127,7 +13127,7 @@
     {
       "id": "2",
       "idPokemon": "68",
-      "idObjet": "2",
+      "idObjet": "214",
       "attaques": [
         "5",
         "6",
@@ -13137,7 +13137,7 @@
     },
     {
       "id": "3",
-      "idPokemon": "4",
+      "idPokemon": "94",
       "idObjet": "241",
       "attaques": [
         "9",
@@ -13148,8 +13148,8 @@
     },
     {
       "id": "4",
-      "idPokemon": "94",
-      "idObjet": "4",
+      "idPokemon": "149",
+      "idObjet": "54",
       "attaques": [
         "13",
         "14",
@@ -13159,8 +13159,8 @@
     },
     {
       "id": "5",
-      "idPokemon": "5",
-      "idObjet": "5",
+      "idPokemon": "150",
+      "idObjet": "297",
       "attaques": [
         "17",
         "18",
@@ -13171,7 +13171,7 @@
     {
       "id": "6",
       "idPokemon": "6",
-      "idObjet": "6",
+      "idObjet": "251",
       "attaques": [
         "21",
         "22",

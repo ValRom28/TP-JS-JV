@@ -28,7 +28,6 @@ export default class Equipe {
             </div>
             <a href="#/item/${objet.id}">
             <div class="card-body objet-class">
-                <p class="card-text">Objet</p>
                 <h2 class="card-title">${objet.name["french"]}</h2>
                 <img src="${objet.img}" class="card-img-top" alt="${objet.name}" loading="lazy">
             </div>
@@ -47,7 +46,7 @@ export default class Equipe {
                 <a href="#/move/${move4.id}">
                 <p class="${move4.type}">${move4.ename}</p>
                         </a>
-                        
+
                     </div>
                     
                 </div>
@@ -58,9 +57,10 @@ export default class Equipe {
         let html = htmlArray.join('');
         
         return /*html*/`
+        <h1 class="text-center"> Votre Equipe </h1>
             <div class="container">
-                <h1> Equipe </h1>
-                <div id="pokemonList" class="row equipe">
+                
+                <div id="pokemonList" class="row equipe my-4">
                     ${html}
                 </div>
             </div>
