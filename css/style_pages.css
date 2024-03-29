@@ -132,19 +132,11 @@ main {
 }
 
 .progress-bar.orange .progress-bar-value {
-    background-color: #cc7d00;
+    background-color: #f90;
 }
 
 .progress-bar.green .progress-bar-value {
-    background-color: #95cc00;
-}
-
-.progress-bar.supergreen .progress-bar-value {
-    background-color: #60cc00;
-}
-
-.progress-bar.blue .progress-bar-value {
-    background-color: #00a8cc;
+    background-color: #0f0;
 }
 
 .star {
@@ -164,6 +156,38 @@ img.shiny, img.normal {
     image-rendering: pixelated;
 }
 
+a{
+    text-decoration: none;
+}
+
+.my-4 {
+    margin-top: 2rem;
+}
+
+
+.objet-class>img {
+    width: 5rem;
+    height: 5rem;
+    margin: 0 auto;
+    margin-left: 1rem;
+    padding: 0;
+    image-rendering: pixelated;
+}
+.objet-class>h2 {
+    font-size: 2rem;
+    text-align: center;
+}
+.objet-class {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding: 0;
+    image-rendering: pixelated;
+    height: 3rem;
+
+}
+
 .img-fluid {
     width: 50%;
     height: auto;
@@ -172,12 +196,4 @@ img.shiny, img.normal {
 
 .card-img-top {
     image-rendering: pixelated;
-}
-
-.pagination {
-    padding-top: 1rem;
-}
-
-#search {
-    margin-bottom: 2rem;
 }

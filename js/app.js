@@ -5,6 +5,7 @@ import PokePage from './views/pages/pokePage.js';
 import Moves from './views/pages/Moves.js';
 import DetailMove from './views/pages/DetailMove.js';
 import Error404 from './views/pages/Error404.js';
+import Equipe from './views/pages/Equipe.js';
 
 import Utils from './services/Utils.js';
 
@@ -16,6 +17,8 @@ const routes = {
     , '/moves'          : Moves
     , '/move/:id'       : DetailMove
     , '/404'            : Error404
+    , '/equipe'         : Equipe
+
 };
 
 const router = async () => {

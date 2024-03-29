@@ -2,6 +2,7 @@ import PokemonProvider from "../../services/PokemonProvider.js";
 import NoteProvider from "../../services/NoteProvider.js";
 import ShinyProvider from "../../services/ShinyProvider.js";
 import Utils from "../../services/Utils.js";
+import EquipeProvider from "../../services/EquipeProvider.js";
 
 export default class PokePage {
     async render() {
@@ -47,6 +48,16 @@ export default class PokePage {
                 <div class="note">
                 <li> Note : ${stars} </li>
                 </div>
+                <button class="addEquipe"> Ajouter à l'équipe </button>
+                <select id="position">
+                <option class=pos-1> 1 </option>
+                <option class=pos-2> 2 </option>
+                <option class=pos-3> 3 </option>
+                <option class=pos-4> 4 </option>
+                <option class=pos-5> 5 </option>
+                <option class=pos-6> 6 </option>
+                </select>
+
                 
             </main>
 
@@ -132,6 +143,11 @@ export default class PokePage {
         document.querySelector('img.normal').classList.remove("normal");
         }
     }
+    async addEquipe() {
+        let request = Utils.parseRequestURL();
+        let position = document.getElementById('position').value;
+        await EquipeProvider.fetchSwitchPokemoninEquipe(position, request.id);
+    }
     
     async after_render() {
         if (document.querySelector('.star')) {
@@ -149,6 +165,13 @@ export default class PokePage {
         if (document.querySelector('.color')) {
             document.querySelector('.color').addEventListener('click', async () => {
                 this.shiny();
+            });
+        }
+        if (document.querySelector('.addEquipe')) {
+            document.querySelector('.addEquipe').addEventListener('click', async () => {
+                 await this.addEquipe();
+                window.location.href = '#/equipe';
+                console.log("Ajouté à l'équipe");
             });
         }
     }
