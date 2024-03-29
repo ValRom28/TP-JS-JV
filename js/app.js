@@ -34,7 +34,6 @@ const router = async () => {
         page.id = request.id;
     }
     
-    console.log(page)
     content.innerHTML = await page.render();
     await page.after_render();
   

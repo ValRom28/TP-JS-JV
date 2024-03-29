@@ -5,18 +5,16 @@ import Utils from "../../services/Utils.js";
 import EquipeProvider from "../../services/EquipeProvider.js";
 
 export default class PokePage {
+    constructor() {
+        this.notation = 0;
+    }
+
     async render() {
         let request = Utils.parseRequestURL()
         let pokemon = await PokemonProvider.fetchPokemonByID(request.id);
-        let notes = await NoteProvider.fetchNoteByID(request.id);
-        let stars = '';
-        for (let i = 1; i <= 5; i++) {
-            if (i <= notes.notation) {
-                stars += `<span class="star v-${i} filled">★</span>`;
-            } else {
-                stars += `<span class="star v-${i}">☆</span>`;
-            }
-        }
+        this.notation = await NoteProvider.fetchNoteByID(request.id);
+        this.notation = this.notation.notation;
+        
         function getColorClass(value) {
             if (value < 60) {
                 return 'red';
@@ -46,7 +44,7 @@ export default class PokePage {
                 <p class="color"> ✨ </p>
                 <img src="${pokemon.img}" alt="${pokemon.name}" class="normal">
                 <div class="note">
-                <li> Note : ${stars} </li>
+                <li> Note : ${this.renderStars()} </li>
                 </div>
                 <button class="addEquipe"> Ajouter à l'équipe </button>
                 <select id="position">
@@ -113,20 +111,34 @@ export default class PokePage {
             </div>
         `;
     }
-    async updateStars(notation) {
+
+    renderStars() {
         let stars = '';
         for (let i = 1; i <= 5; i++) {
-            if (i <= notation) {
+            if (i <= this.notation) {
                 stars += `<span class="star v-${i} filled">★</span>`;
-                console.log("non");
             } else {
-                stars += `<span class="star v-${i}">☆</span>`;
-                console.log("oui");
+                stars += `<span class="star v-${i}">★</span>`;
             }
         }
-        document.querySelector('.note').innerHTML = `<li> Note : ${stars} </li>`;
+        return stars;
     }
+
+    async updateStars() {
+        if (document.querySelector('.star')) {
+            document.querySelectorAll('.star').forEach(star => {
+                let value = parseInt(star.classList[1].split('-')[1]);
+                if (value <= this.notation) {
+                    star.classList.add('filled');
+                } else {
+                    star.classList.remove('filled');
+                }
+            });
+        }
+    }
+
     async shiny() {
+        let request = Utils.parseRequestURL();
         if (document.querySelector('img.shiny')) {
             let pokemon = await PokemonProvider.fetchPokemonByID(request.id);
             let normal = pokemon.img;
@@ -135,14 +147,14 @@ export default class PokePage {
             document.querySelector('img.shiny').classList.remove("shiny");
         }
         else {
-        let request = Utils.parseRequestURL();
-        let pokemon = await ShinyProvider.fetchPokemonShiny(request.id);
-        let shiny = pokemon.img;
-        document.querySelector('img.normal').src = shiny;
-        document.querySelector('img.normal').classList.add("shiny");
-        document.querySelector('img.normal').classList.remove("normal");
+            let pokemon = await ShinyProvider.fetchPokemonShiny(request.id);
+            let shiny = pokemon.img;
+            document.querySelector('img.normal').src = shiny;
+            document.querySelector('img.normal').classList.add("shiny");
+            document.querySelector('img.normal').classList.remove("normal");
         }
     }
+    
     async addEquipe() {
         let request = Utils.parseRequestURL();
         let position = document.getElementById('position').value;
@@ -153,12 +165,10 @@ export default class PokePage {
         if (document.querySelector('.star')) {
             document.querySelectorAll('.star').forEach(star => {
                 star.addEventListener('click', async () => {
-                    let notation = star.classList[1].split('-')[1];
-                    console.log(notation);
                     let request = Utils.parseRequestURL();
-                    await NoteProvider.addNoteById(request.id, notation);
-                    let notes = await NoteProvider.fetchNoteByID(request.id);
-                    this.updateStars(notes.notation);
+                    this.notation = parseInt(star.classList[1].split('-')[1]);
+                    await NoteProvider.addNoteById(request.id, this.notation);
+                    this.updateStars();
                 });
             });
         }

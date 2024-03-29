@@ -17,8 +17,8 @@ export default class Home {
         let selector2 = "<select id='s2'> <option>Tous les types</option> ";
 
         types.forEach(type => {
-            selector1+= `<option> ${type.french} </option>`;
-            selector2+= `<option> ${type.french} </option>`;
+            selector1 += `<option> ${type.french} </option>`;
+            selector2 += `<option> ${type.french} </option>`;
         });
 
         pokedex.data.forEach(pokemon => {
@@ -35,8 +35,8 @@ export default class Home {
             `;
         });
         
-        selector1+="</select>"
-        selector2+="</select>"
+        selector1 += "</select>"
+        selector2 += "</select>"
         return /*html*/`
             <main>
             <h2>Pokedex</h2>
