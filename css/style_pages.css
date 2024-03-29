@@ -155,3 +155,17 @@ img.shiny, img.normal {
     padding: 0;
     image-rendering: pixelated;
 }
+
+.img-fluid {
+    width: 50%;
+    height: auto;
+    image-rendering: pixelated;
+}
+
+.card-img-top {
+    image-rendering: pixelated;
+}
+
+.pagination {
+    padding-top: 1rem;
+}
