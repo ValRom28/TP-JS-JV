@@ -17,37 +17,37 @@ export default class Equipe {
             let move4 = await MovesProvider.getMove(membre.attaques[3]);
             console.log(pokemon);
             return /*html*/`
-                <div class="col">
                 
-                <div class="${membre.id} class="card-group">
-                    <div class="">
-                    <a href="#/pokemon/${pokemon.id}">
-                        <p class="card-text">N°${pokemon.id}</p>
-                        <h2 class="card-title">${pokemon.name["french"]}</h2>
-                        <img src="${pokemon.img}" class="card-img-top" alt="${pokemon.name}" loading="lazy">
+            <div class="${membre.id} col-md-4 card mb-3 pokemon-equipe">
+            <div class="card-body pokemon-class">
+            <a href="#/pokemon/${pokemon.id}">
+                <p class="card-text">N°${pokemon.id}</p>
+                <h2 class="card-title">${pokemon.name["french"]}</h2>
+                <img src="${pokemon.img}" class="card-img-top" alt="${pokemon.name}" loading="lazy">
+                </a>
+            </div>
+            <a href="#/item/${objet.id}">
+            <div class="card-body objet-class">
+                <p class="card-text">Objet</p>
+                <h2 class="card-title">${objet.name["french"]}</h2>
+                <img src="${objet.img}" class="card-img-top" alt="${objet.name}" loading="lazy">
+            </div>
+            </a>
+            <div class="card-body attaque-class">
+                <p class="card-text">Attaques</p>
+                <a href="#/move/${move1.id}">
+                <p class="${move1.type}">${move1.ename}</p>
+                </a>
+                <a href="#/move/${move2.id}">
+                <p class="${move2.type}">${move2.ename}</p>
                         </a>
-                    </div>
-                    <a href="#/item/${objet.id}">
-                    <div class="">
-                        <p class="card-text">Objet</p>
-                        <h2 class="card-title">${objet.name["french"]}</h2>
-                        <img src="${objet.img}" class="card-img-top" alt="${objet.name}" loading="lazy">
-                    </div>
-                    </a>
-                    <div class="">
-                        <p class="card-text">Attaques</p>
-                        <a href="#/move/${move1.id}">
-                        <p class="${move1.type}">${move1.ename}</p>
+                <a href="#/move/${move3.id}">
+                <p class="${move3.type}">${move3.ename}</p>
                         </a>
-                        <a href="#/move/${move2.id}">
-                        <p class="${move2.type}">${move2.ename}</p>
+                <a href="#/move/${move4.id}">
+                <p class="${move4.type}">${move4.ename}</p>
                         </a>
-                        <a href="#/move/${move3.id}">
-                        <p class="${move3.type}">${move3.ename}</p>
-                        </a>
-                        <a href="#/move/${move4.id}">
-                        <p class="${move4.type}">${move4.ename}</p>
-                        </a>
+                        
                     </div>
                     
                 </div>
@@ -60,7 +60,7 @@ export default class Equipe {
         return /*html*/`
             <div class="container">
                 <h1> Equipe </h1>
-                <div id="pokemonList" class="row">
+                <div id="pokemonList" class="row equipe">
                     ${html}
                 </div>
             </div>

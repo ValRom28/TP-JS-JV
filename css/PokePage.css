@@ -155,3 +155,7 @@ img.shiny, img.normal {
     padding: 0;
     image-rendering: pixelated;
 }
+
+a{
+    text-decoration: none;
+}

@@ -13137,8 +13137,8 @@
     },
     {
       "id": "3",
-      "idPokemon": "6",
-      "idObjet": "3",
+      "idPokemon": "4",
+      "idObjet": "241",
       "attaques": [
         "9",
         "10",
@@ -13148,7 +13148,7 @@
     },
     {
       "id": "4",
-      "idPokemon": "4",
+      "idPokemon": "94",
       "idObjet": "4",
       "attaques": [
         "13",
