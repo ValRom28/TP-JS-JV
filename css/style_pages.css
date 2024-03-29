@@ -132,11 +132,19 @@ main {
 }
 
 .progress-bar.orange .progress-bar-value {
-    background-color: #f90;
+    background-color: #cc7d00;
 }
 
 .progress-bar.green .progress-bar-value {
-    background-color: #0f0;
+    background-color: #95cc00;
+}
+
+.progress-bar.supergreen .progress-bar-value {
+    background-color: #60cc00;
+}
+
+.progress-bar.blue .progress-bar-value {
+    background-color: #00a8cc;
 }
 
 .star {
@@ -154,4 +162,18 @@ img.shiny, img.normal {
     margin: 0 auto;
     padding: 0;
     image-rendering: pixelated;
+}
+
+.img-fluid {
+    width: 50%;
+    height: auto;
+    image-rendering: pixelated;
+}
+
+.card-img-top {
+    image-rendering: pixelated;
+}
+
+.pagination {
+    padding-top: 1rem;
 }

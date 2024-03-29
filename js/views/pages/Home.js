@@ -2,9 +2,16 @@ import PokemonProvider from "../../services/PokemonProvider.js";
 import TypesProvider from "../../services/TypesProvider.js";
 
 export default class Home {
+    constructor() {
+        this.currentPage = 1;
+        this.itemsPerPage = 12;
+    }
+
     async render() {
         let types = await TypesProvider.fetchTypes();
-        let pokedex = await PokemonProvider.fetchPokedex();
+        let pokedex = await PokemonProvider.fetchPokedex(this.currentPage, this.itemsPerPage);
+        let pagination = this.renderPagination(pokedex.items);
+
         let html = "";
         let selector1 = "<select id='s1'> <option>Tous les types</option> "; 
         let selector2 = "<select id='s2'> <option>Tous les types</option> ";
@@ -14,7 +21,7 @@ export default class Home {
             selector2+= `<option> ${type.french} </option>`;
         });
 
-        pokedex.forEach(pokemon => {
+        pokedex.data.forEach(pokemon => {
             html += /*html*/`
             <div class="col">
                 <a href="#/pokemon/${pokemon.id}" class="card shadow-sm text-decoration-none">
@@ -41,96 +48,161 @@ export default class Home {
                     <div class="row row-cols-1 row-cols-md-3 g-4" id="pokemonList">
                         ${html}
                     </div>
+                </div>
+                <div id="pagination">${pagination}</div> <!-- Ajouter la pagination ici -->
             </main>
         `;
     }
 
     async searchPokemonByName() {
         let searchValue = document.getElementById('search').value.toLowerCase();
-        let pokedex = await PokemonProvider.fetchPokedex();
+        let pokedex = await PokemonProvider.fetchAllPokemon();
+
         let filteredPokemon = pokedex.filter(pokemon => pokemon.name["french"].toLowerCase().includes(searchValue));
         let html = "";
         filteredPokemon.forEach(pokemon => {
             html += /*html*/`
                 <div class="col">
-                <a href="#/pokemon/${pokemon.id}">
-                    <div class="card">
-                        <p class="card-text">${pokemon.id}</p>
-                        <h2 class="card-title">${pokemon.name["french"]}</h2>
-                        <img src="${pokemon.img}" class="card-img-top" alt="${pokemon.name}" loading="lazy">
-                    </div>
+                    <a href="#/pokemon/${pokemon.id}" class="card shadow-sm text-decoration-none">
+                        <div class="card-body">
+                            <p class="card-text">N°${pokemon.id}</p>
+                            <h4 class="card-title">${pokemon.name["french"]}</h4>
+                            <img src="${pokemon.img}" class="card-img-top" alt="${pokemon.name}">
+                        </div>
                     </a>
                 </div>
             `;
         });
         document.getElementById('pokemonList').innerHTML = html;
+
+        document.getElementById('pagination').style.display = 'none';
     }
+
     async searchPokemonByType() {
         let type1 = document.getElementById('s1').value;
-        type1 = await this.typeFrencheTotypeEnglish(type1);
-        console.log(type1);
         let type2 = document.getElementById('s2').value;
+        type1 = await this.typeFrencheTotypeEnglish(type1);
         type2 = await this.typeFrencheTotypeEnglish(type2);
-        let pokedex = await PokemonProvider.fetchPokedex();
+        
+        let pokedex = await PokemonProvider.fetchAllPokemon();
         let filteredPokemon = pokedex.filter(pokemon => (pokemon.type.includes(type1)|| type1=="Tous les types") && (pokemon.type.includes(type2)|| type2== "Tous les types"));
         let html = "";
         filteredPokemon.forEach(pokemon => {
             console.log(pokemon);
             html += /*html*/`
                 <div class="col">
-                <a href="#/pokemon/${pokemon.id}">
-                    <div class="card">
-                        <p class="card-text">${pokemon.id}</p>
-                        <h2 class="card-title">${pokemon.name["french"]}</h2>
-                        <img src="${pokemon.img}" class="card-img-top" alt="${pokemon.name}" loading="lazy">
-                    </div>
+                    <a href="#/pokemon/${pokemon.id}" class="card shadow-sm text-decoration-none">
+                        <div class="card-body">
+                            <p class="card-text">N°${pokemon.id}</p>
+                            <h4 class="card-title">${pokemon.name["french"]}</h4>
+                            <img src="${pokemon.img}" class="card-img-top" alt="${pokemon.name}">
+                        </div>
                     </a>
                 </div>
             `;
         });
         document.getElementById('pokemonList').innerHTML = html;
+
+        document.getElementById('pagination').style.display = 'none';
     }
-    async typeFrencheTotypeEnglish(typeF){
-        if (typeF == "Tous les types") {
-            return typeF;
-        }
-        else{
-        let types = await TypesProvider.fetchTypes();
-        let type = types.find(type => type.french == typeF);
-        if (type) {
-            return type.english;
-        } else {
-            // handle error, e.g. throw an error or return a default value
-            throw new Error(`No type found for ${typeF}`);
-        }
-    }
-    }
+    
     async searchPokemonByNameAndType() {
         let searchValue = document.getElementById('search').value.toLowerCase();
         let type1 = document.getElementById('s1').value;
-        type1 = await this.typeFrencheTotypeEnglish(type1);
         let type2 = document.getElementById('s2').value;
+        type1 = await this.typeFrencheTotypeEnglish(type1);
         type2 = await this.typeFrencheTotypeEnglish(type2);
-        let pokedex = await PokemonProvider.fetchPokedex();
+
+        let pokedex = await PokemonProvider.fetchAllPokemon();
         let filteredPokemon = pokedex.filter(pokemon => pokemon.name["french"].toLowerCase().includes(searchValue) && (pokemon.type.includes(type1)|| type1=="Tous les types") && (pokemon.type.includes(type2)|| type2== "Tous les types"));
         let html = "";
         filteredPokemon.forEach(pokemon => {
             html += /*html*/`
                 <div class="col">
-                <a href="#/pokemon/${pokemon.id}">
-                    <div class="card">
-                        <p class="card-text">${pokemon.id}</p>
-                        <h2 class="card-title">${pokemon.name["french"]}</h2>
-                        <img src="${pokemon.img}" class="card-img-top" alt="${pokemon.name}" loading="lazy">
-                    </div>
+                    <a href="#/pokemon/${pokemon.id}" class="card shadow-sm text-decoration-none">
+                        <div class="card-body">
+                            <p class="card-text">N°${pokemon.id}</p>
+                            <h4 class="card-title">${pokemon.name["french"]}</h4>
+                            <img src="${pokemon.img}" class="card-img-top" alt="${pokemon.name}">
+                        </div>
                     </a>
                 </div>
             `;
         }
         );
         document.getElementById('pokemonList').innerHTML = html;
+
+        document.getElementById('pagination').style.display = 'none';
+    }
+
+    async typeFrencheTotypeEnglish(typeF){
+        if (typeF == "Tous les types") {
+            return typeF;
+        }
+        else {
+            let types = await TypesProvider.fetchTypes();
+            let type = types.find(type => type.french == typeF);
+            if (type) {
+                return type.english;
+            } else {
+                // handle error, e.g. throw an error or return a default value
+                throw new Error(`No type found for ${typeF}`);
+            }
+        }
     }
    
+    renderPagination(totalItems) {
+        let totalPages = Math.ceil(totalItems / this.itemsPerPage);
+        let pages = '';
+
+        for (let i = 1; i <= totalPages; i++) {
+            if (i === 1 || i === totalPages || (i >= this.currentPage - 1 && i <= this.currentPage + 1)) {
+                pages += `<li class="page-item ${i === this.currentPage ? 'active' : ''}"><a class="page-link" href="#/" data-page="${i}">${i}</a></li>`;
+            } else {
+                if (i === this.currentPage - 3 || i === this.currentPage + 3) {
+                    pages += `<li class="page-item disabled"><span class="page-link">...</span></li>`;
+                }
+            }
+        }
+
+        let pagination = /*html*/ `
+            <nav aria-label="Page navigation">
+                <ul class="pagination">
+                    <li class="page-item ${this.currentPage === 1 ? 'disabled' : ''}">
+                        <a class="page-link" href="#/" data-page="${this.currentPage - 1}" tabindex="-1" aria-disabled="true">Précédent</a>
+                    </li>
+                    ${pages}
+                    <li class="page-item ${this.currentPage === totalPages ? 'disabled' : ''}">
+                        <a class="page-link" href="#/" data-page="${this.currentPage + 1}">Suivant</a>
+                    </li>
+                </ul>
+            </nav>
+        `;
+        return pagination;
+    }
+
+    async bindEvents() {
+        const self = this;
+        const updatePagination = async function(event) {
+            event.preventDefault();
+            let pageNumber = parseInt(this.getAttribute('data-page'));
+            if (!isNaN(pageNumber)) {
+                self.currentPage = pageNumber;
+                let updatedContent = await self.render();
+                let contentContainer = document.getElementById('content');
+                contentContainer.innerHTML = updatedContent;
+                self.bindEvents();
+            }
+        };
+    
+        document.querySelectorAll('.pagination a.page-link').forEach(link => {
+            link.removeEventListener('click', updatePagination);
+        });
+    
+        document.querySelectorAll('.pagination a.page-link').forEach(link => {
+            link.addEventListener('click', updatePagination);
+        });
+    }
 
     after_render() {
         let filterButton = document.getElementById('filterButton');
