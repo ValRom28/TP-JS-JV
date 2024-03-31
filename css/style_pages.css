@@ -128,15 +128,27 @@ main {
 }
 
 .progress-bar.red .progress-bar-value {
-    background-color: #f00;
+    background-color: #c00;
+}
+
+.progress-bar.superorange .progress-bar-value {
+    background-color: #cc5200;
 }
 
 .progress-bar.orange .progress-bar-value {
-    background-color: #f90;
+    background-color: #cc7d00;
 }
 
 .progress-bar.green .progress-bar-value {
-    background-color: #0f0;
+    background-color: #95cc00;
+}
+
+.progress-bar.blue .progress-bar-value {
+    background-color: #00a8cc;
+}
+
+.progress-bar.supergreen .progress-bar-value {
+    background-color: #60cc00;
 }
 
 .star {
