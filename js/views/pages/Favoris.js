@@ -5,30 +5,36 @@ export default class Favoris {
         this.favorites = JSON.parse(localStorage.getItem('favorites')) || [];
     }
 
+    renderFav(pokemon) {
+        return /*html*/`
+            <div class="col">
+                <a href="#/pokemon/${pokemon.id}" class="card text-decoration-none shadow-sm">
+                    <div class="card-body">
+                        <p class="card-text">N°${pokemon.id}</p>
+                        <h4 class="card-title">${pokemon.name["french"]}</h4>
+                        <img src="${pokemon.img}" class="card-img-top" alt="${pokemon.name}" loading="lazy">
+                    </div>
+                </a>
+            </div>
+        `;
+    }
+
     async render() {
         let view = /*html*/`
+        <main>
+            <h2>Favoris</h2>
             <div class="container">
-                <h1> Favoris </h1>
-                <main>
-                    <ul>
+                <div class="row row-cols-1 row-cols-md-3 g-4" id="pokemonList">
         `;
 
         for (let i = 0; i < this.favorites.length; i++) {
             let pokemon = await PokemonProvider.fetchPokemonByID(this.favorites[i]);
-            view += /*html*/`
-                <li>
-                    <a href="/#/pokemon/${pokemon.id}">
-                        <img src="${pokemon.img}" alt="${pokemon.name}">
-                        <p>${pokemon.name["french"]}</p>
-                    </a>
-                </li>
-            `;
+            view += this.renderFav(pokemon);
         }
 
         view += /*html*/`
-                    </ul>
-                </main>
-            </div>
+                </div>
+            </main>
         `;
 
         return view;

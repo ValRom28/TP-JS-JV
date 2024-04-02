@@ -37,7 +37,7 @@ export default class PokePage {
             
             <main>
                 <p> N°${pokemon.id} </p>
-                <span class="fav" id="fav">★</span>
+                ${this.renderFavs(pokemon.id)}
                 <h1> ${pokemon.name["french"]} </h1>
                 <ul>
                 <li> <p> ${pokemon.name["english"]} </p> </li>
@@ -155,6 +155,30 @@ export default class PokePage {
         }
     }
 
+    renderFavs(pokemonId) {
+        let favs = '';
+        if (this.favorites.includes(pokemonId)) {
+            favs += `<span id="fav" class="fav filled">★</span>`;
+            console.log("Déjà dans les favoris");
+        }
+        else {
+            favs += `<span id="fav" class="fav">★</span>`;
+            console.log("Ajouté aux favoris");
+        }
+        return favs;
+    }
+
+    async updateFavs() {
+        if (document.querySelector('.fav')) {
+            const request = Utils.parseRequestURL();
+            if (this.isFavorite(request.id)) {
+                document.getElementById('fav').classList.add('filled');
+            } else {
+                document.getElementById('fav').classList.remove('filled');
+            }
+        }
+    }
+
     async shiny() {
         let request = Utils.parseRequestURL();
         if (document.querySelector('img.shiny')) {
@@ -186,7 +210,7 @@ export default class PokePage {
                     let request = Utils.parseRequestURL();
                     this.notation = parseInt(star.classList[1].split('-')[1]);
                     await NoteProvider.addNoteById(request.id, this.notation);
-                    this.updateStars();
+                    await this.updateStars();
                 });
             });
         }
@@ -202,16 +226,14 @@ export default class PokePage {
                 console.log("Ajouté à l'équipe");
             });
         }
-        document.querySelector('.fav').addEventListener('click', () => {
-            const request = Utils.parseRequestURL();
+        document.getElementById('fav').addEventListener('click', async () => {
+            let request = Utils.parseRequestURL();
             if (this.isFavorite(request.id)) {
                 this.removeFromFavorites(request.id);
-                document.getElementById('fav').classList.remove('filled');
             } else {
-                console.log(request.id);
                 this.addToFavorites(request.id);
-                document.getElementById('fav').classList.add('filled');
             }
+            await this.updateFavs();
         });
     }
     
