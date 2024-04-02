@@ -19,12 +19,13 @@ export default class PokePage {
         function getColorClass(value) {
             if (value < 60) {
                 return 'red';
+            } else if (value < 70) {
+                return 'superorange';
             } else if (value < 100) {
                 return 'orange';
             } else if (value < 120) {
                 return 'green';
-            } 
-            else if (value < 150) {
+            } else if (value < 150) {
                 return 'supergreen';
             } else {
                 return 'blue';
