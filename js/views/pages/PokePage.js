@@ -203,11 +203,11 @@ export default class PokePage {
         }
         document.querySelector('.fav').addEventListener('click', () => {
             const request = Utils.parseRequestURL();
-            console.log(request.id);
             if (this.isFavorite(request.id)) {
                 this.removeFromFavorites(request.id);
                 document.getElementById('fav').classList.remove('filled');
             } else {
+                console.log(request.id);
                 this.addToFavorites(request.id);
                 document.getElementById('fav').classList.add('filled');
             }

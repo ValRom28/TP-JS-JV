@@ -139,13 +139,8 @@ main {
     background-color: #0f0;
 }
 
-.star {
-    font-size: 2em;
-    color: #ccc;
-}
-
-.star.filled {
-    color: #f90;
+.filled {
+    color: #f90 !important;
 }
 
 img.shiny, img.normal {
@@ -225,8 +220,10 @@ li {
     cursor: pointer;
 }
 
-.star {
+.star, .fav {
     cursor: pointer;
+    font-size: 2em;
+    color: #ccc;
 }
 
 .pagination {
