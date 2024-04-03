@@ -14,7 +14,7 @@ export default class Home {
                     <div class="card-body">
                         <p class="card-text">N°${pokemon.id}</p>
                         <h4 class="card-title">${pokemon.name["french"]}</h4>
-                        <img src="${pokemon.img}" class="card-img-top" alt="${pokemon.name}" loading="lazy">
+                        <img src="${pokemon.img}" class="card-img-top" alt="${pokemon.name}">
                     </div>
                 </a>
             </div>
@@ -182,7 +182,6 @@ export default class Home {
         let filterButton = document.getElementById('filterButton');
         if (filterButton) {
             filterButton.addEventListener('click', () => {
-                console.log("Button clicked"); // Vérifier si le bouton est cliqué
                 let type1= document.getElementById('s1').value;
                 let type2= document.getElementById('s2').value;
                 let search= document.getElementById('search').value;
@@ -197,7 +196,7 @@ export default class Home {
                 }
             });
         } else {
-            console.log("Filter button not found"); // Vérifier si le bouton est trouvé
+            console.log("Filter button not found");
         }
     }
 }

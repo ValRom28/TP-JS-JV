@@ -1,4 +1,5 @@
 import PokemonProvider from "../../services/PokemonProvider.js";
+import lazyLoad from "../../services/lazyloading.js";
 
 export default class Favoris {
     constructor() {
@@ -12,7 +13,7 @@ export default class Favoris {
                     <div class="card-body">
                         <p class="card-text">N°${pokemon.id}</p>
                         <h4 class="card-title">${pokemon.name["french"]}</h4>
-                        <img src="${pokemon.img}" class="card-img-top" alt="${pokemon.name}" loading="lazy">
+                        <img data-src="${pokemon.img}" class="card-img-top lazy" alt="${pokemon.name}">
                     </div>
                 </a>
             </div>
@@ -38,5 +39,9 @@ export default class Favoris {
         `;
 
         return view;
+    }
+
+    async after_render() {
+        lazyLoad();
     }
 }
