@@ -7,6 +7,20 @@ export default class Home {
         this.itemsPerPage = 12;
     }
 
+    renderCard(pokemon) {
+        return /*html*/`
+            <div class="col">
+                <a href="#/pokemon/${pokemon.id}" class="card text-decoration-none shadow-sm">
+                    <div class="card-body">
+                        <p class="card-text">N°${pokemon.id}</p>
+                        <h4 class="card-title">${pokemon.name["french"]}</h4>
+                        <img src="${pokemon.img}" class="card-img-top" alt="${pokemon.name}" loading="lazy">
+                    </div>
+                </a>
+            </div>
+        `;
+    }
+
     async render() {
         let types = await TypesProvider.fetchTypes();
         let pokedex = await PokemonProvider.fetchPokedex(this.currentPage, this.itemsPerPage);
@@ -22,17 +36,7 @@ export default class Home {
         });
 
         pokedex.data.forEach(pokemon => {
-            html += /*html*/`
-            <div class="col">
-                <a href="#/pokemon/${pokemon.id}" class="card shadow-sm text-decoration-none">
-                    <div class="card-body">
-                        <p class="card-text">N°${pokemon.id}</p>
-                        <h4 class="card-title">${pokemon.name["french"]}</h4>
-                        <img src="${pokemon.img}" class="card-img-top" alt="${pokemon.name}" loading="lazy">
-                    </div>
-                </a>
-            </div>
-            `;
+            html += this.renderCard(pokemon);
         });
         
         selector1 += "</select>"
@@ -61,17 +65,7 @@ export default class Home {
         let filteredPokemon = pokedex.filter(pokemon => pokemon.name["french"].toLowerCase().includes(searchValue));
         let html = "";
         filteredPokemon.forEach(pokemon => {
-            html += /*html*/`
-                <div class="col">
-                    <a href="#/pokemon/${pokemon.id}" class="card shadow-sm text-decoration-none">
-                        <div class="card-body">
-                            <p class="card-text">N°${pokemon.id}</p>
-                            <h4 class="card-title">${pokemon.name["french"]}</h4>
-                            <img src="${pokemon.img}" class="card-img-top" alt="${pokemon.name}">
-                        </div>
-                    </a>
-                </div>
-            `;
+            html += this.renderCard(pokemon);
         });
         document.getElementById('pokemonList').innerHTML = html;
 
@@ -89,17 +83,7 @@ export default class Home {
         let html = "";
         filteredPokemon.forEach(pokemon => {
             console.log(pokemon);
-            html += /*html*/`
-                <div class="col">
-                    <a href="#/pokemon/${pokemon.id}" class="card shadow-sm text-decoration-none">
-                        <div class="card-body">
-                            <p class="card-text">N°${pokemon.id}</p>
-                            <h4 class="card-title">${pokemon.name["french"]}</h4>
-                            <img src="${pokemon.img}" class="card-img-top" alt="${pokemon.name}">
-                        </div>
-                    </a>
-                </div>
-            `;
+            html += this.renderCard(pokemon);
         });
         document.getElementById('pokemonList').innerHTML = html;
 
@@ -117,17 +101,7 @@ export default class Home {
         let filteredPokemon = pokedex.filter(pokemon => pokemon.name["french"].toLowerCase().includes(searchValue) && (pokemon.type.includes(type1)|| type1=="Tous les types") && (pokemon.type.includes(type2)|| type2== "Tous les types"));
         let html = "";
         filteredPokemon.forEach(pokemon => {
-            html += /*html*/`
-                <div class="col">
-                    <a href="#/pokemon/${pokemon.id}" class="card shadow-sm text-decoration-none">
-                        <div class="card-body">
-                            <p class="card-text">N°${pokemon.id}</p>
-                            <h4 class="card-title">${pokemon.name["french"]}</h4>
-                            <img src="${pokemon.img}" class="card-img-top" alt="${pokemon.name}">
-                        </div>
-                    </a>
-                </div>
-            `;
+            html += this.renderCard(pokemon);
         }
         );
         document.getElementById('pokemonList').innerHTML = html;

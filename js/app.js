@@ -2,6 +2,7 @@ import Home from './views/pages/Home.js';
 import Items from './views/pages/Items.js';
 import DetailItem from './views/pages/DetailItem.js';
 import PokePage from './views/pages/PokePage.js';
+import Favoris from './views/pages/Favoris.js';
 import Moves from './views/pages/Moves.js';
 import DetailMove from './views/pages/DetailMove.js';
 import Error404 from './views/pages/Error404.js';
@@ -18,6 +19,7 @@ const routes = {
     , '/move/:id'       : DetailMove
     , '/404'            : Error404
     , '/equipe'         : Equipe
+    , '/favoris'        : Favoris
 
 };
 

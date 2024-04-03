@@ -151,13 +151,8 @@ main {
     background-color: #60cc00;
 }
 
-.star {
-    font-size: 2em;
-    color: #ccc;
-}
-
-.star.filled {
-    color: #f90;
+.filled {
+    color: #f90 !important;
 }
 
 img.shiny, img.normal {
@@ -219,10 +214,45 @@ li {
     list-style-type: none;
 }
 
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    margin: 0 auto;
+    padding: 0;
+    image-rendering: pixelated;
+}
+
 .color {
     cursor: pointer;
 }
 
-.star {
+.star, .fav {
     cursor: pointer;
+    font-size: 2em;
+    color: #ccc;
+}
+
+.pagination {
+    margin-top: 2rem;
+}
+
+.container {
+    display: flex;
+}
+
+main {
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+aside {
+    margin-left: 14rem;
 }
