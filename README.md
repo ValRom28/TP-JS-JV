@@ -11,14 +11,15 @@
 
 ## <u>Présentation</u>
 
-Ce projet consiste à créer une application en Vue afin d'accéder à une API REST de questionnaires faites en flask.
+Ce projet consiste à créer une application en Javascript en interrogeant une API REST hébergée avec json-server.
 
 ## <u>Installation</u>
 
 ### Prérequis
 
-- Python et pip (installation des requirement)
 - [Node.js](https://nodejs.org/en)
+- json-server
+- PHP
 
 ### Exécution de l'application
 
@@ -41,33 +42,23 @@ Ce projet consiste à créer une application en Vue afin d'accéder à une API R
     cd TP-JS-JV
     ```
 
-- Il faut également installer vue via Node.js et installer les requirements pour flask :
+- Il faut également installer json-server via Node.js :
 
     ```bash
-    cd client_vue
-    npm install vue@latest
-    cd ..
-    python -m venv env
-    pip install -r requirements.txt
+    npm install json-server
     ```
 
 - Pour lancer l'api et le client :
 
     ```bash
     # client
-    cd client_vue
-    npm run dev
+    php -S localhost:5000
 
     # api
-    source env/bin/activate # Linux
-    # ou
-    env/Script/activate # Windows
-    cd server_rest
-    flask initdb
-    flask run
+    npx json-server data.json
     ```
 
-L'applicaion est maintenant accessible à l'adresse `http://localhost:5173`.
+L'applicaion est maintenant accessible à l'adresse `http://localhost:5000`.
 
 ## <u>Équipe de développement</u>
 
